@@ -34,6 +34,16 @@ db.user
         name: "Bob"
       })
       .then(boothang => {
+        console.log("---------");
         console.log(`${returnedUser.firstName} created ${boothang.name}`);
       });
   });
+
+db.user.findOne().then(user => {
+  user.getBoothangs().then(boothangs => {
+    boothangs.forEach(function(boothang) {
+      console.log("---------");
+      console.log(`${user.firstName} has BooThang ${boothang.name}`);
+    });
+  });
+});
