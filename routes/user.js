@@ -59,7 +59,7 @@ router.post("/", function(req, res) {
   res.redirect("/profile");
 });
 
-/*
+/**
  * SEND message to BooThangs route
  * - currently will send message to ALL BooThangs
  */
@@ -80,6 +80,16 @@ router.post("/messages", (req, res) => {
   res.redirect("/profile");
 });
 
+/**
+ * TODO: implement delete route
+ */
+router.delete("/", (req, res) => {
+  res.redirect("/");
+});
+
+/**
+ * helper functions
+ */
 const sendText = (phoneNumber, message) => {
   // only execute if we have a phone number and a message
   if (phoneNumber && message) {
