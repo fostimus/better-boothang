@@ -22,11 +22,11 @@ router.post("/", function(req, res) {
     .then(message => {
       console.log(message.sid);
     });
-  res.send("hey");
+  res.redirect("/profile");
 });
 
-router.get("/messages.ejs", (req, res) => {
-  res.render("auth/messages.ejs");
+router.get("/messages", (req, res) => {
+  res.render("user/messages.ejs");
 });
 
 module.exports = router;
