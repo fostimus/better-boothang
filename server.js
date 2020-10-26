@@ -42,7 +42,7 @@ app.get("/profile", isLoggedIn, (req, res) => {
 });
 
 app.use("/auth", require("./routes/auth"));
-app.use("/user", require("./routes/user"));
+app.use("/user", isLoggedIn, require("./routes/user"));
 
 var server = app.listen(process.env.PORT || 8000, () =>
   console.log(

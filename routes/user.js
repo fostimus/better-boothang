@@ -15,16 +15,26 @@ router.get("/", (req, res) => {
 
 router.post("/", function(req, res) {
   sendText(req.body.phoneNumber);
-  db.boothang
+  db.user
     .findOrCreate({
       where: {
-        name: req.body.name,
-        phoneNumber: req.body.phoneNumber
+        email: req.user.email
       }
     })
-    .then(returnedBoothang => {
-      console.log(`${returnedBoothang.name} was found/created.`);
+    .then(([returnedUser, created]) => {
+      returnedUser
+        .createBoothang({
+          name: req.body.name,
+          phoneNumber: req.body.phoneNumber
+        })
+        .then(createdBoothang => {
+          console.log(createdBoothang);
+          console.log(
+            `${createdBoothang.name} was found/created for ${returnedUser.firstName}.`
+          );
+        });
     });
+
   res.redirect("/profile");
 });
 
@@ -35,9 +45,21 @@ router.get("/messages", (req, res) => {
   res.render("user/messages", { messages: messageData });
 });
 
+// currently will send to all boothangs
 router.post("/messages", (req, res) => {
-  // db.user.
-  sendText(req.body.phoneNumber, req.body.message);
+  db.user
+    .findOne({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(returnedUser => {
+      returnedUser.getBoothangs().then(boothangs => {
+        boothangs.forEach(boothang => {
+          sendText(boothang.phoneNumber, req.body.message);
+        });
+      });
+    });
   res.redirect("/profile");
 });
 
@@ -45,7 +67,7 @@ const sendText = (phoneNumber, message) => {
   const messageToSend = message || "TESTING FROM THE ATOMIC CODE GHOSTS! boo";
   client.messages
     .create({
-      body: messageToSend,
+      body: message,
       from: process.env.TWILIO_NUM,
       to: phoneNumber
     })

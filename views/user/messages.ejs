@@ -3,11 +3,10 @@
 <form action="/user/messages" method="post">
   <ul>
   <% messages.forEach(function(message) { %>
-    <li><%= message.message %></li>
-
-    <input type="hidden" name="message" value="<%= message.message %>">
-
-    <button type="submit" name="button">Choose this message</button>
+    <li><a href='#' onclick="document.getElementById('message-to-boo').value='<%= message.message %>'"><%= message.message %></a></li>
   <% }) %>
   </ul>
+
+  <input id='message-to-boo' type="text" name="message" value="">
+  <button type="submit" name="button">Choose this message</button>
 </form>
