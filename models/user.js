@@ -1,9 +1,7 @@
-'use strict';
-const bcrypt = require('bcrypt')
+"use strict";
+const bcrypt = require("bcrypt");
 
-const {
-  Model
-} = require('sequelize');
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class user extends Model {
     /**
@@ -13,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.boothang);
     }
 
-    // Compares entered password to hashed password
     validPassword(passwordTyped) {
       return bcrypt.compareSync(passwordTyped, this.password);
-    };
+    }
 
     // remove the password before serializing
     toJSON() {
@@ -26,39 +24,50 @@ module.exports = (sequelize, DataTypes) => {
       delete userData.password;
       return userData;
     }
-  };
-
-  user.init({
-    email: {
-      type: DataTypes.STRING,
-      validate: {
-        isEmail: {
-          msg: 'Invalid email address'
+  }
+  user.init(
+    {
+      email: {
+        type: DataTypes.STRING,
+        validate: {
+          isEmail: {
+            msg: "Invalid email address"
+          }
+        }
+      },
+      password: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [8, 99],
+            msg: "Password must be between 8 and 99 characters"
+          }
+        }
+      },
+      firstName: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [1, 99],
+            msg: "First Name must be between 1 and 99 characters"
+          }
+        }
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        validate: {
+          len: {
+            args: [1, 99],
+            msg: "Last Name must be between 1 and 99 characters"
+          }
         }
       }
     },
-    name: {
-      type: DataTypes.STRING,
-      validate: {
-        len: {
-          args: [1, 99],
-          msg: 'Name must be between 1 and 99 characters'
-        }
-      }
-    },
-    password: {
-      type: DataTypes.STRING,
-      validate: {
-        len: {
-          args: [8, 99],
-          msg: 'Password must be between 8 and 99 characters'
-        }
-      }
+    {
+      sequelize,
+      modelName: "user"
     }
-  }, {
-    sequelize,
-    modelName: 'user',
-  });
+  );
 
   user.beforeCreate((pendingUser, options) => {
     if (pendingUser && pendingUser.password) {
@@ -67,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       // store the hash as the user's password
       pendingUser.password = hash;
     }
-  })
+  });
 
   return user;
 };
