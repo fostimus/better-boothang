@@ -10,7 +10,24 @@ const client = require("twilio")(
 );
 
 router.get("/", (req, res) => {
-  res.render("user/booInfo.ejs");
+  const messages = fs.readFileSync("./sample-messages.json");
+  const messageData = JSON.parse(messages);
+
+  db.user
+    .findOrCreate({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(([returnedUser, created]) => {
+      returnedUser.getBoothangs().then(boothangs => {
+        console.log(boothangs);
+        res.render("user/boothang", {
+          boothangs: boothangs,
+          messages: messageData
+        });
+      });
+    });
 });
 
 router.post("/", function(req, res) {
@@ -38,13 +55,6 @@ router.post("/", function(req, res) {
   res.redirect("/profile");
 });
 
-router.get("/messages", (req, res) => {
-  const messages = fs.readFileSync("./sample-messages.json");
-  const messageData = JSON.parse(messages);
-
-  res.render("user/messages", { messages: messageData });
-});
-
 // currently will send to all boothangs
 router.post("/messages", (req, res) => {
   db.user
@@ -64,16 +74,18 @@ router.post("/messages", (req, res) => {
 });
 
 const sendText = (phoneNumber, message) => {
-  const messageToSend = message || "TESTING FROM THE ATOMIC CODE GHOSTS! boo";
-  client.messages
-    .create({
-      body: message,
-      from: process.env.TWILIO_NUM,
-      to: phoneNumber
-    })
-    .then(message => {
-      console.log(message.sid);
-    });
+  // only execute if we have a phone number and a message
+  if (phoneNumber && message) {
+    client.messages
+      .create({
+        body: message,
+        from: process.env.TWILIO_NUM,
+        to: phoneNumber
+      })
+      .then(message => {
+        console.log(message.sid);
+      });
+  }
 };
 
 module.exports = router;
