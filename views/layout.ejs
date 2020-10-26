@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Better BooThang</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/client.js" type="text/javascript">
+
+    </script>
   </head>
+
   <body>
     <header>
       <nav>
         <ul>
           <% if (!currentUser) { %>
-            <li><a href="/">Home</a></li>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/auth/signup">Signup</a></li>
+          <li><a href="/auth/login">Login</a></li>
           <% } else { %>
-            <li><a href="/">Home</a></li>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/auth/messages.ejs">Messages</a></li>
-            <li><a href="/auth/booInfo.ejs">Your Boo</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/auth/logout">Logout</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li><a href="/user/messages">Messages</a></li>
+          <li><a href="/user">Your Boo</a></li>
           <% } %>
         </ul>
       </nav>
@@ -28,4 +33,5 @@
     <h1>Better BooThang</h1>
     <%- body %>
   </body>
+
 </html>
