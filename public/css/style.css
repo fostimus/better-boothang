@@ -1,3 +1,7 @@
+body {
+  background-color: #2bbcff;
+}
+
 nav ul li {
   text-decoration: none;
   display: inline-block;
@@ -5,5 +9,5 @@ nav ul li {
 }
 
 h1 {
-  color: chartreuse;
+  color: #f5ffa6;
 }
