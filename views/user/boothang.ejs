@@ -3,21 +3,20 @@
 <% } else { %>
   <h3>Current BooThangs</h3>
 <% } %>
-<ul>
+<ul class="boothangs">
   <% boothangs.forEach(function(boothang) { %>
-    <li>
-      <%= boothang.name %> : <%= boothang.phoneNumber %>
-      <form action="/user/?_method=DELETE" method="post">
-        <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
-        <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
-        <button type="submit" name="button">Delete</button>
-      </form>
-    </li>
+    <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
+    <form action="/user/?_method=DELETE" method="post">
+      <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
+      <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
+      <button type="submit" name="button">Delete</button>
+    </form>
   <% }) %>
 </ul>
 
 <button id="new-boothang" type="button" name="button">Add New BooThang</button>
 
+<!-- ideally, this is a separate modal -->
 <div class="new-boothang-container hidden">
   <h3>Enter your BooThang's info below!</h3>
   <form action="/user" method="POST">
@@ -42,5 +41,5 @@
   </ul>
 
   <input id='message-to-boo' type="text" name="message" value="">
-  <button type="submit" name="button">Choose this message</button>
+  <button type="submit" name="button">Send to yo boo!</button>
 </form>
