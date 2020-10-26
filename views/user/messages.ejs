@@ -1,9 +1,9 @@
 <p>Choose your message!</p>
 
 <form action="/user/messages" method="post">
-  <ul>
+  <ul class="messages">
   <% messages.forEach(function(message) { %>
-    <li><a href='#' onclick="document.getElementById('message-to-boo').value='<%= message.message %>'"><%= message.message %></a></li>
+    <li><a href='#'><%= message.message %></a></li>
   <% }) %>
   </ul>
 
