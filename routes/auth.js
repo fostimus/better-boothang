@@ -53,12 +53,4 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/booInfo.ejs', (req, res) => {
-  res.render('auth/booInfo.ejs')
-})
-
-router.get('/messages.ejs', (req, res) => {
-  res.render('auth/messages.ejs')
-})
-
 module.exports = router;
