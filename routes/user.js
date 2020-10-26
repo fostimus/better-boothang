@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/booInfo.ejs', (req, res) => {
-    res.render('auth/booInfo.ejs')
+    res.render('user/booInfo.ejs')
 })
 
 router.get('/messages.ejs', (req, res) => {
-    res.render('auth/messages.ejs')
+    res.render('user/messages.ejs')
 })
 
-module.exports = router;
+smodule.exports = router;
