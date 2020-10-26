@@ -15,6 +15,16 @@ router.get("/", (req, res) => {
 
 router.post("/", function(req, res) {
   sendText(req.body.phoneNumber);
+  db.boothang
+    .findOrCreate({
+      where: {
+        name: req.body.name,
+        phoneNumber: req.body.phoneNumber
+      }
+    })
+    .then(returnedBoothang => {
+      console.log(`${returnedBoothang.name} was found/created.`);
+    });
   res.redirect("/profile");
 });
 
@@ -26,6 +36,7 @@ router.get("/messages", (req, res) => {
 });
 
 router.post("/messages", (req, res) => {
+  // db.user.
   sendText(req.body.phoneNumber, req.body.message);
   res.redirect("/profile");
 });
