@@ -5,7 +5,12 @@
 <% } %>
 <ul>
   <% boothangs.forEach(function(boothang) { %>
-    <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
+    <li>
+      <%= boothang.name %> : <%= boothang.phoneNumber %>
+      <form class="" action="index.html" method="post">
+        <button type="button" name="button">Delete</button>
+      </form>
+    </li>
   <% }) %>
 </ul>
 

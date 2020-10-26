@@ -59,7 +59,10 @@ router.post("/", function(req, res) {
   res.redirect("/profile");
 });
 
-// currently will send to all boothangs
+/*
+ * SEND message to BooThangs route
+ * - currently will send message to ALL BooThangs
+ */
 router.post("/messages", (req, res) => {
   db.user
     .findOne({
