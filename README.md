@@ -19,8 +19,9 @@ Firstly, you would want to make an account with us. Before we can send anything 
 
 Once we know you, tell us about your boo! We don't need anything too personal, just the simple things like their 
     - Name
-    - Birthday
-    - The day you two said "okay" to dating each other
+    <!-- Commented Out until we reach a soft MVP -->
+    <!-- - Birthday
+    - The day you two said "okay" to dating each other -->
 
 Set your message! Did you need to send a message about an anniversary? Did you almost forget about their birthday? Did you need to text them *every* day? Better BooThang has pre-made messages for every occasion! So if you're hitting a writer's block for your sentimental message, or you can't find the right words to write, Better BooThang has got you covered!
 
