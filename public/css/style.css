@@ -5,9 +5,13 @@ body {
 nav ul li {
   text-decoration: none;
   display: inline-block;
-  margin-right: .3em;
+  margin-right: 0.3em;
 }
 
 h1 {
   color: #f5ffa6;
+}
+
+.hidden {
+  display: none;
 }

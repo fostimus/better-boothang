@@ -21,8 +21,12 @@ router.get("/", (req, res) => {
     })
     .then(([returnedUser, created]) => {
       returnedUser.getBoothangs().then(boothangs => {
-        console.log(boothangs);
+        let newBoothang = false;
+        if (boothangs.length < 1) {
+          newBoothang = true;
+        }
         res.render("user/boothang", {
+          newBoothang: newBoothang,
           boothangs: boothangs,
           messages: messageData
         });
