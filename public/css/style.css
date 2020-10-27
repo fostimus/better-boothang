@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap");
 
 body {
   background-color: #2bbcff;
@@ -13,20 +13,13 @@ header {
   justify-content: space-between;
   outline: 2px solid rgb(77, 73, 73);
   border-bottom: 3px solid goldenrod;
-  background: #6156EA;
-}
-
-.container {
-  padding-top: 100px;
+  background: #6156ea;
 }
 
 h1 {
   /* border: 2px solid red; */
   color: #49494a;
-  text-shadow: 
-    0 1px 2px #FFD300, 
-    0 1px 4px white,
-    0 1px 10px black;
+  text-shadow: 0 1px 2px #ffd300, 0 1px 4px white, 0 1px 10px black;
   font-family: "Love Ya Like A Sister";
   font-weight: bold;
   margin: 0 0 0 10px;
@@ -42,8 +35,8 @@ nav ul {
   padding: 0;
   gap: 20px;
   outline: 2px solid black;
-  border: 2px solid #EA6157;
-  background: #57EAAA;
+  border: 2px solid #ea6157;
+  background: #57eaaa;
   display: flex;
   list-style: none;
   margin: 0;
@@ -51,22 +44,42 @@ nav ul {
 
 nav ul li a {
   font-weight: bolder;
-  color: #EA6157;
+  color: #ea6157;
   text-shadow: 0 0 2px black;
   justify-content: space-around;
   text-transform: uppercase;
 }
 
 nav ul li a:hover {
-  color: #EAC357;
-  text-shadow: 
-  0 0 2px darkred,
-  0 0 5px black;
+  color: #eac357;
+  text-shadow: 0 0 2px darkred, 0 0 5px black;
   text-decoration: none;
   transition-duration: 0.9s;
 }
 
-@media only screen and (max-width: 650px){
+.title {
+  padding: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+.boothangs {
+  list-style: none;
+}
+
+/**
+ * Bootstrap
+ */
+.card {
+  padding: 15px;
+}
+
+/**
+ * Responsive
+ */
+@media only screen and (max-width: 650px) {
   header > h1 {
     font-size: 1.5rem;
   }
@@ -81,12 +94,4 @@ nav ul li a:hover {
   nav ul li {
     font-size: 0.8rem;
   }
-}
-
-.hidden {
-  display: none;
-}
-
-.boothangs {
-  list-style: none;
 }

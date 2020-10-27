@@ -8,6 +8,18 @@ messageLinks.forEach(messageLink => {
 });
 
 // attach clich handler to toggle new BooThang
-document.querySelector("#new-boothang").addEventListener("click", () => {
-  document.querySelector(".new-boothang-container").classList.toggle("hidden");
-});
+if (document.querySelector("#new-boothang")) {
+  document.querySelector("#new-boothang").addEventListener("click", () => {
+    document
+      .querySelector(".new-boothang-container")
+      .classList.toggle("hidden");
+  });
+}
+
+if (document.querySelector("#how-it-works")) {
+  document.querySelector("#how-it-works").addEventListener("click", () => {
+    document
+      .querySelector(".instructions-container")
+      .classList.toggle("hidden");
+  });
+}

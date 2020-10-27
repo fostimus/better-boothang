@@ -1,49 +1,54 @@
 <!-- This is the Homepage -->
+<main class="home container">
+  <h2 class="text-center title">Welcome to Better BooThang</h2>
+  <div class="row align-items-center">
+    <section class="col container">
+      <p>Have you ever forgotten to send a text? Did you ever leave someone on read, but this time, you didn't mean to? With Better BooThang you won't have to worry about those confrontational texts! Better BooThang is an automated messaging app that sends your loved ones texts messages even when you've forgotten to. Choose a pre-made text for every occasion!</p>
 
-<div class="container">
-    <h2>Welcome to Better BooThang</h2>
-</div>
+      <p>With Better BooThang all you have to do is automate your way into their heart!</p>
 
-<div class="container">
-  <h2 class="text-center">Log In</h2>
-  <form action="/login" method="POST">
-    <label for="auth-email">Email</label>
-    <input id="auth-email" type="email" name="email">
+      <button id="how-it-works" type="button" name="button">How does it work?</button>
 
-    <label for="auth-password">Password</label>
-    <input id="auth-password" type="password" name="password">
+      <div class="instructions-container hidden">
+        <h2>How Better BooThang Works!</h2>
 
-    <input type="submit" value="Log In">
-  </form>
-  <p class="text-center">Not a user yet? <a href="/signup">Sign up here.</a></p>
-</div>
+        <p>Better BooThang is an app that uses timers, pre-made texts, and basic info about your loved ones to send them that loving notification when you want. If you're brand new to the app, here's the quick run through.</p>
 
-<div class="container">
-  Not a member of Better BooThang? <a href="/signup">Sign up here.</a>\
-</div>
+        <p>Firstly, you would want to make an account with us. Before we can send anything to your boo we need to know about you!</p>
 
-<div class="container">
+        <p>Once we know you, tell us about your boo! We don't need anything too personal, just the simple things like their:</p>
+        <p>- Name</p>
+        <p>- Phone Number</p>
 
-  <p>Have you ever forgotten to send a text? Did you ever leave someone on read, but this time, you didn't mean to? With Better BooThang you won't have to worry about those confrontational texts! Better BooThang is an automated messaging app that sends your loved ones texts messages even when you've forgotten to. Choose a pre-made text for every occasion!</p>
+        <p>Set your message! Did you need to send a message about an anniversary? Did you almost forget about their birthday? Did you need to text them <i>every</i> day? Better BooThang has pre-made messages for every occasion! So if you're hitting a writer's block for your sentimental message, or if you can't find the right words, Better BooThang has got you covered!</p>
 
-  <p>With Better BooThang all you have to do is automate your way into their heart!</p>
+        <p>Finally, pick <i>when</i> you want to send your messages! Our app allows you to choose the right time for you. Noon? 5pm? Midnight? Set it and forget it!</p>
 
-  <h2>How Better BooThang Works!</h2>
+        <p>And that's it!</p>
+      </div>
+    </section>
 
-  <p>Better BooThang is an app that uses timers, pre-made texts, and basic info about your loved ones to send them that loving notification when you want. If you're brand new to the app, here's the quick run through.</p>
+    <section class="col container">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="card-title">Log In</h2>
+          <form action="/login" method="POST">
+            <label for="auth-email">Email</label>
+            <input id="auth-email" type="email" name="email">
 
-  <p>Firstly, you would want to make an account with us. Before we can send anything to your boo we need to know about you!</p>
+            <label for="auth-password">Password</label>
+            <input id="auth-password" type="password" name="password">
 
-  <p>Once we know you, tell us about your boo! We don't need anything too personal, just the simple things like their:</p>
-  <p>- Name</p>
-  <p>- Phone Number</p>
+            <input type="submit" value="Log In">
+          </form>
+        </div>
+      </div>
 
-  <p>Set your message! Did you need to send a message about an anniversary? Did you almost forget about their birthday? Did you need to text them <i>every</i> day? Better BooThang has pre-made messages for every occasion! So if you're hitting a writer's block for your sentimental message, or if you can't find the right words, Better BooThang has got you covered!</p>
-
-  <p>Finally, pick <i>when</i> you want to send your messages! Our app allows you to choose the right time for you. Noon? 5pm? Midnight? Set it and forget it!</p>
-
-  <p>And that's it!</p>
+      <div class="card text-center">
+        Not a member of Better BooThang? <a class="card-link" href="/signup">Sign up here.</a>
+      </div>
+    </section>
 
 <!-- TODO: Insert Comedic Fake Customer Rating -->
-
-</div>
+  </div>
+</main>
