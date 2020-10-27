@@ -62,5 +62,7 @@ For this website we used many different types of software for front-end, back-en
 
 Here's some code that we're proud to present to you!
 
+Please ensure that your .env has the necessary code to have this application run.
+
 ## Future Development
 As a user, I want to be able to select a date and time for the message to be sent to my selected BooThang.
