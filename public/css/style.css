@@ -73,6 +73,10 @@ nav ul li a:hover {
   list-style: none;
 }
 
+.modal {
+  z-index: 1;
+}
+
 /**
  * Bootstrap
  */
