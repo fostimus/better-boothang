@@ -6,7 +6,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   const modal = {
     title: "Sign In",
-    body: "Please sign in"
+    body: "../auth/signup.ejs"
   };
   res.render("index", { modal: modal });
 });
