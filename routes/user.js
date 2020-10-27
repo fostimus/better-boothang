@@ -10,7 +10,28 @@ const client = require("twilio")(
 );
 
 router.get("/", (req, res) => {
-    res.render("user/booInfo.ejs");
+  const messages = fs.readFileSync("./sample-messages.json");
+  const messageData = JSON.parse(messages);
+
+  db.user
+    .findOrCreate({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(([returnedUser, created]) => {
+      returnedUser.getBoothangs().then(boothangs => {
+        let newBoothang = false;
+        if (boothangs.length < 1) {
+          newBoothang = true;
+        }
+        res.render("user/boothang", {
+          newBoothang: newBoothang,
+          boothangs: boothangs,
+          messages: messageData
+        });
+      });
+    });
 });
 
 router.post("/", function(req, res) {
@@ -37,14 +58,10 @@ router.post("/", function(req, res) {
     res.redirect("/profile");
 });
 
-router.get("/messages", (req, res) => {
-    const messages = fs.readFileSync("./sample-messages.json");
-    const messageData = JSON.parse(messages);
-
-    res.render("user/messages", { messages: messageData });
-});
-
-// currently will send to all boothangs
+/**
+ * SEND message to BooThangs route
+ * - currently will send message to ALL BooThangs
+ */
 router.post("/messages", (req, res) => {
   db.user
     .findOne({
@@ -62,17 +79,29 @@ router.post("/messages", (req, res) => {
   res.redirect("/profile");
 });
 
+/**
+ * TODO: implement delete route
+ */
+router.delete("/", (req, res) => {
+  res.redirect("/");
+});
+
+/**
+ * helper functions
+ */
 const sendText = (phoneNumber, message) => {
-  const messageToSend = message || "TESTING FROM THE ATOMIC CODE GHOSTS! boo";
-  client.messages
-    .create({
-      body: message,
-      from: process.env.TWILIO_NUM,
-      to: phoneNumber
-    })
-    .then(message => {
-      console.log(message.sid);
-    });
+  // only execute if we have a phone number and a message
+  if (phoneNumber && message) {
+    client.messages
+      .create({
+        body: message,
+        from: process.env.TWILIO_NUM,
+        to: phoneNumber
+      })
+      .then(message => {
+        console.log(message.sid);
+      });
+  }
 };
 
 module.exports = router;

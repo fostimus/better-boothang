@@ -1,13 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap');
+
 body {
   background-color: #2bbcff;
 }
 
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
+header {
+  position: fixed;
+  width: 100vw;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: 2px solid rgb(77, 73, 73);
+  border-bottom: 3px solid goldenrod;
+  background: #6156EA;
+}
+
+.container {
+  padding-top: 100px;
 }
 
 h1 {
-  color: #f5ffa6;
+  /* border: 2px solid red; */
+  color: #49494a;
+  text-shadow: 
+    0 1px 2px #FFD300, 
+    0 1px 4px white,
+    0 1px 10px black;
+  font-family: "Love Ya Like A Sister";
+  font-weight: bold;
+  margin: 0 0 0 10px;
+}
+
+nav {
+  width: 300px;
+  margin: 0 10px 0 0;
+}
+
+nav ul {
+  justify-content: center;
+  padding: 0;
+  gap: 20px;
+  outline: 2px solid black;
+  border: 2px solid #EA6157;
+  background: #57EAAA;
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+nav ul li a {
+  font-weight: bolder;
+  color: #EA6157;
+  text-shadow: 0 0 2px black;
+  justify-content: space-around;
+  text-transform: uppercase;
+}
+
+nav ul li a:hover {
+  color: #EAC357;
+  text-shadow: 
+  0 0 2px darkred,
+  0 0 5px black;
+  text-decoration: none;
+  transition-duration: 0.9s;
+}
+
+@media only screen and (max-width: 650px){
+  header > h1 {
+    font-size: 1.5rem;
+  }
+  nav {
+    width: 200px;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  nav ul li {
+    font-size: 0.8rem;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.boothangs {
+  list-style: none;
 }
