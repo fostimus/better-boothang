@@ -5,6 +5,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("./config/ppConfig");
 const isLoggedIn = require("./middleware/isLoggedIn");
+const methodOverride = require("method-override");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -13,6 +14,9 @@ app.use(require("morgan")("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + "/public"));
 app.use(layouts);
+
+// use method override to handle PUT and DELETE requests elegantly
+app.use(methodOverride("_method"));
 
 app.use(
   session({
@@ -42,7 +46,7 @@ app.get("/profile", isLoggedIn, (req, res) => {
 });
 
 app.use("/auth", require("./routes/auth"));
-app.use("/user", require("./routes/user"));
+app.use("/user", isLoggedIn, require("./routes/user"));
 
 var server = app.listen(process.env.PORT || 8000, () =>
   console.log(

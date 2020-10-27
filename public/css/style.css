@@ -4,7 +4,6 @@ body {
   background-color: #2bbcff;
 }
 
-
 header {
   position: fixed;
   width: 100vw;
@@ -82,4 +81,12 @@ nav ul li a:hover {
   nav ul li {
     font-size: 0.8rem;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.boothangs {
+  list-style: none;
 }

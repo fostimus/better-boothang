@@ -10,48 +10,99 @@ const client = require("twilio")(
 );
 
 router.get("/", (req, res) => {
-  res.render("user/booInfo.ejs");
+  const messages = fs.readFileSync("./sample-messages.json");
+  const messageData = JSON.parse(messages);
+
+  db.user
+    .findOrCreate({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(([returnedUser, created]) => {
+      returnedUser.getBoothangs().then(boothangs => {
+        let newBoothang = false;
+        if (boothangs.length < 1) {
+          newBoothang = true;
+        }
+        res.render("user/boothang", {
+          newBoothang: newBoothang,
+          boothangs: boothangs,
+          messages: messageData
+        });
+      });
+    });
 });
 
 router.post("/", function(req, res) {
   sendText(req.body.phoneNumber);
-  db.boothang
+  db.user
     .findOrCreate({
       where: {
-        name: req.body.name,
-        phoneNumber: req.body.phoneNumber
+        email: req.user.email
       }
     })
-    .then(returnedBoothang => {
-      console.log(`${returnedBoothang.name} was found/created.`);
+    .then(([returnedUser, created]) => {
+      returnedUser
+        .createBoothang({
+          name: req.body.name,
+          phoneNumber: req.body.phoneNumber
+        })
+        .then(createdBoothang => {
+          console.log(createdBoothang);
+          console.log(
+            `${createdBoothang.name} was found/created for ${returnedUser.firstName}.`
+          );
+        });
     });
+
   res.redirect("/profile");
 });
 
-router.get("/messages", (req, res) => {
-  const messages = fs.readFileSync("./sample-messages.json");
-  const messageData = JSON.parse(messages);
-
-  res.render("user/messages", { messages: messageData });
-});
-
+/**
+ * SEND message to BooThangs route
+ * - currently will send message to ALL BooThangs
+ */
 router.post("/messages", (req, res) => {
-  // db.user.
-  sendText(req.body.phoneNumber, req.body.message);
+  db.user
+    .findOne({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(returnedUser => {
+      returnedUser.getBoothangs().then(boothangs => {
+        boothangs.forEach(boothang => {
+          sendText(boothang.phoneNumber, req.body.message);
+        });
+      });
+    });
   res.redirect("/profile");
 });
 
+/**
+ * TODO: implement delete route
+ */
+router.delete("/", (req, res) => {
+  res.redirect("/");
+});
+
+/**
+ * helper functions
+ */
 const sendText = (phoneNumber, message) => {
-  const messageToSend = message || "TESTING FROM THE ATOMIC CODE GHOSTS! boo";
-  client.messages
-    .create({
-      body: messageToSend,
-      from: process.env.TWILIO_NUM,
-      to: phoneNumber
-    })
-    .then(message => {
-      console.log(message.sid);
-    });
+  // only execute if we have a phone number and a message
+  if (phoneNumber && message) {
+    client.messages
+      .create({
+        body: message,
+        from: process.env.TWILIO_NUM,
+        to: phoneNumber
+      })
+      .then(message => {
+        console.log(message.sid);
+      });
+  }
 };
 
 module.exports = router;
