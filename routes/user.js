@@ -42,6 +42,9 @@ router.get("/", (req, res) => {
     });
 });
 
+/**
+ * Add New BooThang
+ */
 router.post("/", function(req, res) {
   sendText(req.body.phoneNumber);
   db.user
@@ -63,7 +66,7 @@ router.post("/", function(req, res) {
           );
         });
     });
-  res.redirect("/profile");
+  res.redirect("/user");
 });
 
 /**
