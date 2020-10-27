@@ -61,6 +61,10 @@ nav ul li a:hover {
   padding: 25px;
 }
 
+.login {
+  padding: 15px;
+}
+
 .hidden {
   display: none;
 }
