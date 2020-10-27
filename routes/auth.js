@@ -49,11 +49,10 @@ router.get("/login", (req, res) => {
   res.render("index");
 });
 
-router.post(
-  "/login",
+router.post("/login",
   passport.authenticate("local", {
     successRedirect: "/user",
-    failureRedirect: "/login",
+    failureRedirect: "index",
     failureFlash: "Invalid username and/or password",
     successFlash: "You have logged in"
   })

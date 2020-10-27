@@ -55,7 +55,7 @@ router.post("/", function(req, res) {
                 );
             });
         });
-    res.redirect("/profile");
+    res.redirect("/user");
 });
 
 /**
@@ -76,7 +76,7 @@ router.post("/messages", (req, res) => {
         });
       });
     });
-  res.redirect("/profile");
+  res.redirect("/user");
 });
 
 /**
