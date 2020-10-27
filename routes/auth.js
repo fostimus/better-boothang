@@ -3,6 +3,10 @@ const passport = require("../config/ppConfig");
 const db = require("../models");
 const router = express.Router();
 
+router.get("/", (req, res) => {
+  res.render("index");
+});
+
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
@@ -25,31 +29,31 @@ router.post("/signup", (req, res) => {
         // if created, success and login
         console.log("user created");
         passport.authenticate("local", {
-          successRedirect: "/",
+          successRedirect: "/user",
           successFlash: "Account created and logged in"
         })(req, res);
       } else {
         // if not created, the email already exists
         req.flash("error", "Email already exists");
-        res.redirect("/auth/signup");
+        res.redirect("/signup");
       }
     })
     .catch(error => {
       // if an error occurs, let's see what the error is
       req.flash("error", error.message);
-      res.redirect("/auth/signup");
+      res.redirect("/signup");
     });
 });
 
 router.get("/login", (req, res) => {
-  res.render("auth/login");
+  res.render("index");
 });
 
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/auth/login",
+    successRedirect: "/user",
+    failureRedirect: "/login",
     failureFlash: "Invalid username and/or password",
     successFlash: "You have logged in"
   })

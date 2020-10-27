@@ -2,3 +2,21 @@
 <div class="container">
     <h2>Welcome to Better BooThang</h2>
 </div>
+
+<div class="container">
+  <h2 class="text-center">Log In</h2>
+  <form action="/login" method="POST">
+    <label for="auth-email">Email</label>
+    <input id="auth-email" type="email" name="email">
+
+    <label for="auth-password">Password</label>
+    <input id="auth-password" type="password" name="password">
+
+    <input type="submit" value="Log In">
+  </form>
+  <p class="text-center">Not a user yet? <a href="/signup">Sign up here.</a></p>
+</div>
+
+<div class="container">
+  Not a member of Better BooThang? <a href="/signup">Sign up here.</a>
+</div>
