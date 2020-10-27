@@ -4,7 +4,11 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("index");
+  const modal = {
+    title: "Sign In",
+    body: "Please sign in"
+  };
+  res.render("index", { modal: modal });
 });
 
 router.get("/signup", (req, res) => {

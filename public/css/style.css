@@ -73,8 +73,8 @@ nav ul li a:hover {
   list-style: none;
 }
 
-.modal {
-  z-index: 1;
+.modal-backdrop {
+  z-index: 0;
 }
 
 /**
