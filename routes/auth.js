@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     body: "./modals/signup.ejs"
   };
   const howItWorksModal = {
-    name: "how-it-work-modal",
+    name: "how-it-works-modal",
     title: "How Better BooThang Works",
     body: "./modals/how-it-works.ejs"
   };
@@ -56,10 +56,6 @@ router.post("/signup", (req, res) => {
       req.flash("error", error.message);
       res.redirect("/signup");
     });
-});
-
-router.get("/login", (req, res) => {
-  res.render("index");
 });
 
 router.post(

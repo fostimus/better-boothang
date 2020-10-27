@@ -11,14 +11,14 @@ before(function(done) {
 });
 
 describe('GET /profile', function() {
-  it('should redirect to /auth/login if not logged in', function(done) {
+  it('should redirect to /login if not logged in', function(done) {
     request(app).get('/profile')
-    .expect('Location', '/auth/login')
+    .expect('Location', '/login')
     .expect(302, done);
   });
 
   it('should return a 200 response if logged in', function(done) {
-    agent.post('/auth/signup')
+    agent.post('/signup')
     .set('Content-Type', 'application/x-www-form-urlencoded')
     .send({
       email: 'my@user.co',
