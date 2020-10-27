@@ -15,11 +15,3 @@ if (document.querySelector("#new-boothang")) {
       .classList.toggle("hidden");
   });
 }
-
-if (document.querySelector("#how-it-works")) {
-  document.querySelector("#how-it-works").addEventListener("click", () => {
-    document
-      .querySelector(".instructions-container")
-      .classList.toggle("hidden");
-  });
-}

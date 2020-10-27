@@ -7,25 +7,9 @@
 
       <p>With Better BooThang all you have to do is automate your way into their heart!</p>
 
-      <button id="how-it-works" type="button" name="button">How does it work?</button>
+      <button id="how-it-works" type="button" data-toggle="modal" data-target="#<%= howItWorksModal.name %>">How does it work?</button>
 
-      <div class="instructions-container hidden">
-        <h2>How Better BooThang Works!</h2>
-
-        <p>Better BooThang is an app that uses timers, pre-made texts, and basic info about your loved ones to send them that loving notification when you want. If you're brand new to the app, here's the quick run through.</p>
-
-        <p>Firstly, you would want to make an account with us. Before we can send anything to your boo we need to know about you!</p>
-
-        <p>Once we know you, tell us about your boo! We don't need anything too personal, just the simple things like their:</p>
-        <p>- Name</p>
-        <p>- Phone Number</p>
-
-        <p>Set your message! Did you need to send a message about an anniversary? Did you almost forget about their birthday? Did you need to text them <i>every</i> day? Better BooThang has pre-made messages for every occasion! So if you're hitting a writer's block for your sentimental message, or if you can't find the right words, Better BooThang has got you covered!</p>
-
-        <p>Finally, pick <i>when</i> you want to send your messages! Our app allows you to choose the right time for you. Noon? 5pm? Midnight? Set it and forget it!</p>
-
-        <p>And that's it!</p>
-      </div>
+      <%- include('partials/modal', {modal: howItWorksModal}) %>
     </section>
 
     <section class="col container login">
@@ -46,12 +30,12 @@
 
       <div class="card text-center">
         <div class="card-body">
-          Not a member of Better BooThang? <a class="card-link" href="#" data-toggle="modal" data-target="#<%= modal.name %>">Sign up here.</a>
+          Not a member of Better BooThang? <a class="card-link" href="#" data-toggle="modal" data-target="#<%= signInModal.name %>">Sign up here.</a>
         </div>
       </div>
     </section>
 
-    <%- include('partials/modal') %>
+    <%- include('partials/modal', {modal: signInModal}) %>
 
 <!-- TODO: Insert Comedic Fake Customer Rating -->
   </div>

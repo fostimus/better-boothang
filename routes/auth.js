@@ -4,12 +4,20 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const modal = {
+  const signInModal = {
     name: "sign-in-modal",
     title: "Sign In",
-    body: "../auth/signup.ejs"
+    body: "./modals/signup.ejs"
   };
-  res.render("index", { modal: modal });
+  const howItWorksModal = {
+    name: "how-it-work-modal",
+    title: "How Better BooThang Works",
+    body: "./modals/how-it-works.ejs"
+  };
+  res.render("index", {
+    signInModal: signInModal,
+    howItWorksModal: howItWorksModal
+  });
 });
 
 router.get("/signup", (req, res) => {
