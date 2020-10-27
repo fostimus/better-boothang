@@ -81,6 +81,7 @@ router.post("/messages", (req, res) => {
 
 /**
  * TODO: implement delete route
+ * TODO: Add an "update" button for the BooThang
  */
 router.delete("/", (req, res) => {
   res.redirect("/");

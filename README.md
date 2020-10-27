@@ -66,3 +66,4 @@ Please ensure that your .env has the necessary code to have this application run
 
 ## Future Development
 As a user, I want to be able to select a date and time for the message to be sent to my selected BooThang.
+As a user, I want to be able to select a message perfect for specific occasions.
