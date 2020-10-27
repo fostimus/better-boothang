@@ -1,5 +1,6 @@
 {
   "development": {
+    "password": "@T0M!K6#0$T",
     "database": "better-boothang",
     "host": "127.0.0.1",
     "dialect": "postgres"
