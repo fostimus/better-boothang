@@ -37,16 +37,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.use("/", require("./routes/auth"));
+app.use("/user", isLoggedIn, require("./routes/user"));
 
 app.get("/profile", isLoggedIn, (req, res) => {
   res.render("profile");
 });
-
-app.use("/auth", require("./routes/auth"));
-app.use("/user", isLoggedIn, require("./routes/user"));
 
 var server = app.listen(process.env.PORT || 8000, () =>
   console.log(

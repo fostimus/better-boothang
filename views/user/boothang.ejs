@@ -1,45 +1,48 @@
-<% if (boothangs.length === 1) {%>
-  <h3>Current BooThang</h3>
-<% } else { %>
-  <h3>Current BooThangs</h3>
-<% } %>
-<ul class="boothangs">
-  <% boothangs.forEach(function(boothang, index) { %>
-    <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
-    <form action="/user/<%= boothang.id %>/?_method=DELETE" method="post">
-      <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
-      <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
-      <button type="submit" name="button">Delete</button>
-    </form>
-  <% }) %>
-</ul>
-
-<button id="new-boothang" type="button" name="button">Add New BooThang</button>
-
-<!-- ideally, this is a separate modal -->
-<div class="new-boothang-container hidden">
-  <h3>Enter your BooThang's info below!</h3>
-  <form action="/user" method="POST">
-      <label for="booName">Boo Name</label>
-      <input id="booName" type="text" name="name">
-
-      <label for="booNumber">Boo Number</label>
-      <input id="booNumber" type="number" name="phoneNumber">
-
-      <input type="submit" value="Add BooThang">
-  </form>
-</div>
-
-<h3>Select Your Message</h3>
-<p>Enter your text message below, or choose one of our premade messages</p>
-
-<form action="/user/messages" method="post">
-  <ul class="messages">
-  <% messages.forEach(function(message) { %>
-    <li><a href='#'><%= message.message %></a></li>
-  <% }) %>
+<div class="container">
+  <% if (boothangs.length === 1) {%>
+    <h3>Current BooThang</h3>
+  <% } else { %>
+    <h3>Current BooThangs</h3>
+  <% } %>
+  <ul class="boothangs">
+    <% boothangs.forEach(function(boothang) { %>
+      <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
+      <form action="/user/?_method=DELETE" method="post">
+        <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
+        <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
+        <button type="submit" name="button">Delete</button>
+      </form>
+    <% }) %>
   </ul>
-
-  <input id='message-to-boo' type="text" name="message" value="">
-  <button type="submit" name="button">Send to yo boo!</button>
-</form>
+  
+  <button id="new-boothang" type="button" name="button">Add New BooThang</button>
+  
+  <!-- ideally, this is a separate modal -->
+  <div class="new-boothang-container hidden">
+    <h3>Enter your BooThang's info below!</h3>
+    <form action="/user" method="POST">
+        <label for="booName">Boo Name</label>
+        <input id="booName" type="text" name="name">
+  
+        <label for="booNumber">Boo Number</label>
+        <input id="booNumber" type="number" name="phoneNumber">
+  
+        <input type="submit" value="Add BooThang">
+    </form>
+  </div>
+  
+  <h3>Select Your Message</h3>
+  <p>Enter your text message below, or choose one of our premade messages</p>
+  
+  <form action="/user/messages" method="post">
+    <ul class="messages">
+    <% messages.forEach(function(message) { %>
+      <li><a href='#'><%= message.message %></a></li>
+    <% }) %>
+    </ul>
+  
+    <input id='message-to-boo' type="text" name="message" value="">
+    <button type="submit" name="button">Send to yo boo!</button>
+  </form>
+  
+</div>
