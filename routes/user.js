@@ -5,8 +5,8 @@ const router = express.Router();
 const fs = require("fs");
 
 const client = require("twilio")(
-  process.env.ACCOUNT_SID,
-  process.env.AUTH_TOKEN
+    process.env.ACCOUNT_SID,
+    process.env.AUTH_TOKEN
 );
 
 router.get("/", (req, res) => {
@@ -35,28 +35,27 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", function(req, res) {
-  sendText(req.body.phoneNumber);
-  db.user
-    .findOrCreate({
-      where: {
-        email: req.user.email
-      }
-    })
-    .then(([returnedUser, created]) => {
-      returnedUser
-        .createBoothang({
-          name: req.body.name,
-          phoneNumber: req.body.phoneNumber
+    sendText(req.body.phoneNumber);
+    db.user
+        .findOrCreate({
+            where: {
+                email: req.user.email
+            }
         })
-        .then(createdBoothang => {
-          console.log(createdBoothang);
-          console.log(
-            `${createdBoothang.name} was found/created for ${returnedUser.firstName}.`
-          );
+        .then(([returnedUser, created]) => {
+            returnedUser
+                .createBoothang({
+                    name: req.body.name,
+                    phoneNumber: req.body.phoneNumber
+                })
+                .then(createdBoothang => {
+                    console.log(createdBoothang);
+                    console.log(
+                    `${createdBoothang.name} was found/    created for ${returnedUser.firstName}.`
+                );
+            });
         });
-    });
-
-  res.redirect("/profile");
+    res.redirect("/profile");
 });
 
 /**
@@ -82,6 +81,7 @@ router.post("/messages", (req, res) => {
 
 /**
  * TODO: implement delete route
+ * TODO: Add an "update" button for the BooThang
  */
 router.delete("/", (req, res) => {
   res.redirect("/");
