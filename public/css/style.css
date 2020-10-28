@@ -75,6 +75,8 @@ nav ul li a:hover {
 
 .boothangs {
   list-style: none;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .modal-backdrop {
@@ -99,6 +101,11 @@ nav ul li a:hover {
  */
 .card {
   padding: 15px;
+}
+
+.boos {
+  margin: 0;
+  padding: 5px;
 }
 
 /**
