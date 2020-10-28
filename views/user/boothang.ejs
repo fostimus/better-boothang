@@ -37,11 +37,11 @@
   <form action="/user/messages" method="post">
     <ul class="messages">
     <% messages.forEach(function(message) { %>
-      <li><a href='#'><%= message.message %></a></li>
+      <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
   
-    <input id='message-to-boo' type="text" name="message" value="">
+    <input class="custom" id='message-to-boo' type="text" name="message" value="">
     <button type="submit" name="button">Send to yo boo!</button>
   </form>
   
