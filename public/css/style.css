@@ -73,12 +73,12 @@ nav ul li a:hover {
   padding: 15px;
 }
 
-.hidden {
-  display: none;
-}
-
 .boothangs {
   list-style: none;
+}
+
+.modal-backdrop {
+  z-index: 0;
 }
 
 .custom {

@@ -4,7 +4,20 @@ const db = require("../models");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("index");
+  const signInModal = {
+    name: "sign-in-modal",
+    title: "Sign In",
+    body: "./modals/signup.ejs"
+  };
+  const howItWorksModal = {
+    name: "how-it-works-modal",
+    title: "How Better BooThang Works",
+    body: "./modals/how-it-works.ejs"
+  };
+  res.render("index", {
+    signInModal: signInModal,
+    howItWorksModal: howItWorksModal
+  });
 });
 
 router.get("/signup", (req, res) => {
@@ -45,11 +58,8 @@ router.post("/signup", (req, res) => {
     });
 });
 
-router.get("/login", (req, res) => {
-  res.render("index");
-});
-
-router.post("/login",
+router.post(
+  "/login",
   passport.authenticate("local", {
     successRedirect: "/user",
     failureRedirect: "index",

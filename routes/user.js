@@ -5,11 +5,18 @@ const router = express.Router();
 const fs = require("fs");
 
 const client = require("twilio")(
-    process.env.ACCOUNT_SID,
-    process.env.AUTH_TOKEN
+  process.env.ACCOUNT_SID,
+  process.env.AUTH_TOKEN
 );
 
 router.get("/", (req, res) => {
+  // set up add new boothang modal
+  const addBoothangModal = {
+    name: "how-it-works-modal",
+    title: "Enter Your BooThang's Info",
+    body: "./modals/add-new-boothang.ejs"
+  };
+  // get premade messages from json
   const messages = fs.readFileSync("./sample-messages.json");
   const messageData = JSON.parse(messages);
 
@@ -28,34 +35,38 @@ router.get("/", (req, res) => {
         res.render("user/boothang", {
           newBoothang: newBoothang,
           boothangs: boothangs,
-          messages: messageData
+          messages: messageData,
+          addBoothangModal: addBoothangModal
         });
       });
     });
 });
 
+/**
+ * Add New BooThang
+ */
 router.post("/", function(req, res) {
-    sendText(req.body.phoneNumber);
-    db.user
-        .findOrCreate({
-            where: {
-                email: req.user.email
-            }
+  sendText(req.body.phoneNumber);
+  db.user
+    .findOrCreate({
+      where: {
+        email: req.user.email
+      }
+    })
+    .then(([returnedUser, created]) => {
+      returnedUser
+        .createBoothang({
+          name: req.body.name,
+          phoneNumber: req.body.phoneNumber
         })
-        .then(([returnedUser, created]) => {
-            returnedUser
-                .createBoothang({
-                    name: req.body.name,
-                    phoneNumber: req.body.phoneNumber
-                })
-                .then(createdBoothang => {
-                    console.log(createdBoothang);
-                    console.log(
-                    `${createdBoothang.name} was found/ created for ${returnedUser.firstName}.`
-                );
-            });
+        .then(createdBoothang => {
+          console.log(createdBoothang);
+          console.log(
+            `${createdBoothang.name} was found/created for ${returnedUser.firstName}.`
+          );
         });
-    res.redirect("/user");
+    });
+  res.redirect("/user");
 });
 
 /**
