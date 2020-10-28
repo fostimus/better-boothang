@@ -7,9 +7,7 @@
   <ul class="boothangs">
     <% boothangs.forEach(function(boothang) { %>
       <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
-      <form action="/user/?_method=DELETE" method="post">
-        <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
-        <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
+      <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
         <button type="submit" name="button">Delete</button>
       </form>
     <% }) %>
@@ -37,11 +35,11 @@
   <form action="/user/messages" method="post">
     <ul class="messages">
     <% messages.forEach(function(message) { %>
-      <li><a href='#'><%= message.message %></a></li>
+      <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
   
-    <input id='message-to-boo' type="text" name="message" value="">
+    <input class="custom" id='message-to-boo' type="text" name="message" value="">
     <button type="submit" name="button">Send to yo boo!</button>
   </form>
   
