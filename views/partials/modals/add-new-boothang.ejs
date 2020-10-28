@@ -1,12 +1,17 @@
 <div class="new-boothang-container hidden">
-  <h3>Enter your BooThang's info below!</h3>
-  <form action="/user" method="POST">
-      <label for="booName">Boo Name</label>
-      <input id="booName" type="text" name="name">
+  <form action="/user" method="POST" class="form-flex">
+    <div class="form-container">
+      <div>
+        <label for="booName">Boo Name</label>
+        <input id="booName" type="text" name="name">
+      </div>
 
-      <label for="booNumber">Boo Number</label>
-      <input id="booNumber" type="number" name="phoneNumber">
+      <div>
+        <label for="booNumber">Boo Number</label>
+        <input id="booNumber" type="number" name="phoneNumber">
+      </div>
+    </div>
 
-      <input type="submit" value="Add BooThang">
+    <input type="submit" value="Add BooThang">
   </form>
 </div>
