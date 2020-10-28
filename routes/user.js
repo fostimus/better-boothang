@@ -5,8 +5,8 @@ const router = express.Router();
 const fs = require("fs");
 
 const client = require("twilio")(
-  process.env.ACCOUNT_SID,
-  process.env.AUTH_TOKEN
+    process.env.ACCOUNT_SID, 
+    process.env.AUTH_TOKEN
 );
 
 router.get("/", (req, res) => {
@@ -90,10 +90,6 @@ router.post("/messages", (req, res) => {
   res.redirect("/user");
 });
 
-/**
- * TODO: implement delete route
- * TODO: Add an "update" button for the BooThang
- */
 router.delete("/:id", (req, res) => {
   db.boothang.destroy({
       where: {
@@ -102,6 +98,21 @@ router.delete("/:id", (req, res) => {
     })
     .then(deleteChick => {
       console.log(`Bye~ ${deleteChick.name}` )
+    })
+  res.redirect("/user");
+});
+
+router.put("/:id", (req, res) => {
+  db.boothang.update({
+      name: req.body.newName,
+      phoneNumber: req.body.newPhone,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(updateChick => {
+      console.log(`${updateChick.name} Updated!` )
     })
   res.redirect("/user");
 });

@@ -10,6 +10,11 @@
       <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
         <button type="submit" name="button">Delete</button>
       </form>
+      <form action="/user/<%= boothang.id %>?_method=PUT" method="post">
+        <input type="text" name="newName" id="" placeholder="Name">
+        <input type="text" name="newPhone" id="" placeholder="Phone #">
+        <button type="submit" name="button">Update Boo Info</button>
+    </form>
     <% }) %>
   </ul>
     
