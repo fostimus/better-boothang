@@ -16,6 +16,13 @@ router.get("/", (req, res) => {
     title: "Enter Your BooThang's Info",
     body: "./modals/add-new-boothang.ejs"
   };
+  // Set up update Boothang modal
+  const updateBoo = {
+    name: "how-it-works-modal",
+    title: "Update Yo Boothang",
+    body: "./modals/update-boo.ejs"
+  };
+
   // get premade messages from json
   const messages = fs.readFileSync("./sample-messages.json");
   const messageData = JSON.parse(messages);
@@ -36,7 +43,8 @@ router.get("/", (req, res) => {
           newBoothang: newBoothang,
           boothangs: boothangs,
           messages: messageData,
-          addBoothangModal: addBoothangModal
+          addBoothangModal: addBoothangModal,
+          updateBoo: updateBoo
         });
       });
     });
@@ -105,7 +113,7 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   db.boothang.update({
       name: req.body.newName,
-      phoneNumber: req.body.newPhone,
+      phoneNumber: req.body.newPhone
     }, {
       where: {
         id: req.params.id
