@@ -16,13 +16,18 @@
       <div class="card mb-2">
         <div class="card-body text-center">
           <h2 class="card-title">Log In</h2>
-          <form action="/login" method="POST">
-              <label for="auth-email">Email</label>
-              <input id="auth-email" type="email" name="email">
+          <form action="/login" method="POST" class="form-flex">
+            <div class="form-container">
+              <div>
+                <label for="auth-email">Email</label>
+                <input id="auth-email" type="email" name="email">
+              </div>
 
-              <label for="auth-password">Password</label>
-              <input id="auth-password" type="password" name="password">
-
+              <div>
+                <label for="auth-password">Password</label>
+                <input id="auth-password" type="password" name="password">
+              </div>
+            </div>
             <input type="submit" value="Log In">
           </form>
         </div>
