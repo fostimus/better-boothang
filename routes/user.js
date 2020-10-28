@@ -62,7 +62,7 @@ router.post("/", function(req, res) {
         .then(createdBoothang => {
           console.log(createdBoothang);
           console.log(
-            `${createdBoothang.name} was found/    created for ${returnedUser.firstName}.`
+            `${createdBoothang.name} was found/created for ${returnedUser.firstName}.`
           );
         });
     });
@@ -87,15 +87,23 @@ router.post("/messages", (req, res) => {
         });
       });
     });
-  res.redirect("/profile");
+  res.redirect("/user");
 });
 
 /**
  * TODO: implement delete route
  * TODO: Add an "update" button for the BooThang
  */
-router.delete("/", (req, res) => {
-  res.redirect("/");
+router.delete("/:id", (req, res) => {
+  db.boothang.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(deleteChick => {
+      console.log(`Bye~ ${deleteChick.name}` )
+    })
+  res.redirect("/user");
 });
 
 /**

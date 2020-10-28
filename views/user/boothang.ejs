@@ -1,33 +1,34 @@
-<% if (boothangs.length === 1) {%>
-  <h3>Current BooThang</h3>
-<% } else { %>
-  <h3>Current BooThangs</h3>
-<% } %>
-<ul class="boothangs">
-  <% boothangs.forEach(function(boothang) { %>
-    <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
-    <form action="/user/?_method=DELETE" method="post">
-      <!-- TODO, need some way to send unique value for boothang; primary key? phone number? -->
-      <input type="hidden" name="phoneNumber" value="<%= boothang.phoneNumber %>">
-      <button type="submit" name="button">Delete</button>
-    </form>
-  <% }) %>
-</ul>
-
-<button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button>
-
-<%- include('../partials/modal', {modal: addBoothangModal}) %>
-
-<h3>Select Your Message</h3>
-<p>Enter your text message below, or choose one of our premade messages</p>
-
-<form action="/user/messages" method="post">
-  <ul class="messages">
-  <% messages.forEach(function(message) { %>
-    <li><a href='#'><%= message.message %></a></li>
-  <% }) %>
+<div class="container">
+  <% if (boothangs.length === 1) {%>
+    <h3>Current BooThang</h3>
+  <% } else { %>
+    <h3>Current BooThangs</h3>
+  <% } %>
+  <ul class="boothangs">
+    <% boothangs.forEach(function(boothang) { %>
+      <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
+      <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
+        <button type="submit" name="button">Delete</button>
+      </form>
+    <% }) %>
   </ul>
+    
+  <button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button>
 
-  <input id='message-to-boo' type="text" name="message" value="">
-  <button type="submit" name="button">Send to yo boo!</button>
-</form>
+  <%- include('../partials/modal', {modal: addBoothangModal}) %>
+  
+  <h3>Select Your Message</h3>
+  <p>Enter your text message below, or choose one of our premade messages</p>
+  
+  <form action="/user/messages" method="post">
+    <ul class="messages">
+    <% messages.forEach(function(message) { %>
+      <li><a class="suggestions" href='#'><%= message.message %></a></li>
+    <% }) %>
+    </ul>
+  
+    <input class="custom" id='message-to-boo' type="text" name="message" value="">
+    <button type="submit" name="button">Send to yo boo!</button>
+  </form>
+  
+</div>

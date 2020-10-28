@@ -2,6 +2,14 @@
 
 body {
   background-color: #2bbcff;
+  font-family: "Love Ya Like A Sister"
+}
+
+.alerts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
 }
 
 header {
@@ -71,6 +79,19 @@ nav ul li a:hover {
 
 .modal-backdrop {
   z-index: 0;
+}
+
+.custom {
+  width: 75%;
+}
+
+.suggestions {
+  color: #000000;
+  text-shadow: 0 1px 2px #6ad95b, 0 1px 4px white, 0 1px 10px black;
+}
+
+.suggestions:hover {
+  color: #bd1a1a
 }
 
 /**

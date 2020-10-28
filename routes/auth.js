@@ -62,7 +62,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/user",
-    failureRedirect: "/login",
+    failureRedirect: "index",
     failureFlash: "Invalid username and/or password",
     successFlash: "You have logged in"
   })

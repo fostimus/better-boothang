@@ -4,7 +4,7 @@
   },
   {
     "id": 2,
-    "message": "Hey boo, I'm sorry about last night..."
+    "message": "How's my baby boo doing today?"
   },
   {
     "id": 3,
@@ -17,5 +17,25 @@
   {
     "id": 5,
     "message": "Hey boo, you hungry?"
+  },
+  {
+    "id": 6,
+    "message": "Hey baby, I've got a surprise for you. When can we meet up?"
+  },
+  {
+    "id": 7,
+    "message": "You keep running through my mind all day boo."
+  },
+  {
+    "id": 8,
+    "message": "Hey babe, I'm sorry about last night..."
+  },
+  {
+    "id": 9,
+    "message": "Of course I wouldn't forget! Happy Birthday baby boo!"
+  },
+  {
+    "id": 10,
+    "message": "Did you really think I would forget? Happy Anniversary baby boo!"
   }
 ]
