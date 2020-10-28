@@ -5,17 +5,24 @@ const router = express.Router();
 const fs = require("fs");
 
 const client = require("twilio")(
-  process.env.ACCOUNT_SID,
-  process.env.AUTH_TOKEN
+    process.env.ACCOUNT_SID, 
+    process.env.AUTH_TOKEN
 );
 
 router.get("/", (req, res) => {
   // set up add new boothang modal
   const addBoothangModal = {
-    name: "how-it-works-modal",
+    name: "add-boothang-modal",
     title: "Enter Your BooThang's Info",
     body: "./modals/add-new-boothang.ejs"
   };
+  // Set up update Boothang modal
+  const updateBoo = {
+    name: "update-boothang",
+    title: "Update Yo Boothang",
+    body: "./modals/update-boo.ejs"
+  };
+
   // get premade messages from json
   const messages = fs.readFileSync("./sample-messages.json");
   const messageData = JSON.parse(messages);
@@ -36,7 +43,8 @@ router.get("/", (req, res) => {
           newBoothang: newBoothang,
           boothangs: boothangs,
           messages: messageData,
-          addBoothangModal: addBoothangModal
+          addBoothangModal: addBoothangModal,
+          updateBoo: updateBoo
         });
       });
     });
@@ -90,10 +98,6 @@ router.post("/messages", (req, res) => {
   res.redirect("/user");
 });
 
-/**
- * TODO: implement delete route
- * TODO: Add an "update" button for the BooThang
- */
 router.delete("/:id", (req, res) => {
   db.boothang.destroy({
       where: {
@@ -102,6 +106,21 @@ router.delete("/:id", (req, res) => {
     })
     .then(deleteChick => {
       console.log(`Bye~ ${deleteChick.name}` )
+    })
+  res.redirect("/user");
+});
+
+router.put("/:id", (req, res) => {
+  db.boothang.update({
+      name: req.body.newName,
+      phoneNumber: req.body.newPhone
+    }, {
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(updateChick => {
+      console.log(`${updateChick.name} Updated!` )
     })
   res.redirect("/user");
 });

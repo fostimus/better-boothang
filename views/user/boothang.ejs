@@ -6,10 +6,23 @@
   <% } %>
   <ul class="boothangs">
     <% boothangs.forEach(function(boothang) { %>
-      <li><%= boothang.name %> : <%= boothang.phoneNumber %></li>
-      <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
-        <button type="submit" name="button">Delete</button>
-      </form>
+      <section class="col-4 container boos">
+        <div class="card boo">
+          <div class="card-body text-center">
+            <h2 class="card-title"><%= boothang.name %> </h2>
+            <h3><%= boothang.phoneNumber %></h3>
+          </div>
+        </div>
+        <div class="card boo text-center">
+          <div class="card-buttons">
+            <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
+              <button type="submit" name="button">Delete</button>
+            </form>
+            <button id="update" type="button" data-toggle="modal" data-target="#<%= updateBoo.name %>">Update</button>
+            <%- include('../partials/modal', {modal: updateBoo, boothang: boothang}) %>
+          </div>
+        </div>
+      </section>
     <% }) %>
   </ul>
     
