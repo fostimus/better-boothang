@@ -12,13 +12,13 @@ const client = require("twilio")(
 router.get("/", (req, res) => {
   // set up add new boothang modal
   const addBoothangModal = {
-    name: "how-it-works-modal",
+    name: "add-boothang-modal",
     title: "Enter Your BooThang's Info",
     body: "./modals/add-new-boothang.ejs"
   };
   // Set up update Boothang modal
   const updateBoo = {
-    name: "how-it-works-modal",
+    name: "update-boothang",
     title: "Update Yo Boothang",
     body: "./modals/update-boo.ejs"
   };
