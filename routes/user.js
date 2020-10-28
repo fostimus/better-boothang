@@ -16,6 +16,12 @@ router.get("/", (req, res) => {
     title: "Enter Your BooThang's Info",
     body: "./modals/add-new-boothang.ejs"
   };
+
+  const sendToBooModal = {
+    name: "send-to-boo-modal",
+    title: "Sent!",
+    body: "Your message has been sent to your boo :)"
+  };
   // get premade messages from json
   const messages = fs.readFileSync("./sample-messages.json");
   const messageData = JSON.parse(messages);
@@ -36,7 +42,8 @@ router.get("/", (req, res) => {
           newBoothang: newBoothang,
           boothangs: boothangs,
           messages: messageData,
-          addBoothangModal: addBoothangModal
+          addBoothangModal: addBoothangModal,
+          sendToBooModal: sendToBooModal
         });
       });
     });
@@ -87,7 +94,8 @@ router.post("/messages", (req, res) => {
         });
       });
     });
-  res.redirect("/user");
+  res.json();
+  // res.redirect("/user");
 });
 
 /**
@@ -95,14 +103,15 @@ router.post("/messages", (req, res) => {
  * TODO: Add an "update" button for the BooThang
  */
 router.delete("/:id", (req, res) => {
-  db.boothang.destroy({
+  db.boothang
+    .destroy({
       where: {
         id: req.params.id
       }
     })
     .then(deleteChick => {
-      console.log(`Bye~ ${deleteChick.name}` )
-    })
+      console.log(`Bye~ ${deleteChick.name}`);
+    });
   res.redirect("/user");
 });
 

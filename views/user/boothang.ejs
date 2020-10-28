@@ -12,23 +12,29 @@
       </form>
     <% }) %>
   </ul>
-    
+
   <button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button>
 
   <%- include('../partials/modal', {modal: addBoothangModal}) %>
-  
+
   <h3>Select Your Message</h3>
   <p>Enter your text message below, or choose one of our premade messages</p>
-  
-  <form action="/user/messages" method="post">
+
+  <form class="message-form" action="/user/messages" method="post">
     <ul class="messages">
     <% messages.forEach(function(message) { %>
       <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
-  
-    <input class="custom" id='message-to-boo' type="text" name="message" value="">
-    <button type="submit" name="button">Send to yo boo!</button>
+
+    <div class="">
+      <input class="custom" id='message-to-boo' type="text" name="message" value="">
+      <button class="clear-input" type="button" name="button">Clear</button>
+    </div>
+    <button id="send-to-boo" type="submit" data-toggle="modal" data-target="#<%= sendToBooModal.name %>">Send to yo boo!</button>
+
+    <%- include('../partials/modal', {modal: sendToBooModal}) %>
+
   </form>
-  
+
 </div>

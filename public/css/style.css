@@ -2,7 +2,7 @@
 
 body {
   background-color: #2bbcff;
-  font-family: "Love Ya Like A Sister"
+  font-family: "Love Ya Like A Sister";
 }
 
 .alerts {
@@ -91,7 +91,13 @@ nav ul li a:hover {
 }
 
 .suggestions:hover {
-  color: #bd1a1a
+  color: #bd1a1a;
+}
+
+.message-form {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 10px;
 }
 
 /**
