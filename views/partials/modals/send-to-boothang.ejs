@@ -4,10 +4,10 @@
   <button class="btn btn-secondary dropdown-toggle" type="button" id="boothangDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Select a BooThang
   </button>
-  <input type="hidden" id="chosenBoothang" name="chosenBoothang" value="">
+  <input type="hidden" id="chosenBoothang" name="chosenBoothangId" value="">
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <% boothangs.forEach(function(boothang) { %>
-      <button type="button" class="dropdown-item choose-boothang"><%= boothang.name %></button>
+      <button type="button" class="dropdown-item choose-boothang" boothangId="<%= boothang.id %>"><%= boothang.name %></button>
     <% })%>
   </div>
 </div>

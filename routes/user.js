@@ -86,28 +86,41 @@ router.post("/", function(req, res) {
 
 /**
  * SEND message to BooThangs route
- * - currently will send message to ALL BooThangs
  */
 router.post("/messages", (req, res) => {
-  console.log("*** MESSAGE IS: " + req.body.message);
-  console.log("*** chosenBoothang IS: " + req.body.chosenBoothang);
-
-  db.user
-    .findOne({
-      where: {
-        email: req.user.email
-      }
-    })
-    .then(returnedUser => {
-      returnedUser.getBoothangs().then(boothangs => {
-        boothangs.forEach(boothang => {
-          // sendText(boothang.phoneNumber, req.body.message);
+  // if there was no boothang id provided, send to all boothangs
+  if (!req.body.chosenBoothangId || req.body.chosenBoothangId === "") {
+    db.user
+      .findOne({
+        where: {
+          email: req.user.email
+        }
+      })
+      .then(returnedUser => {
+        returnedUser.getBoothangs().then(boothangs => {
+          boothangs.forEach(boothang => {
+            sendText(boothang.phoneNumber, req.body.message);
+          });
         });
       });
-    });
+  } // if the boothangId was provided, only send to that one
+  else {
+    db.boothang
+      .findOne({
+        where: {
+          id: req.body.chosenBoothangId
+        }
+      })
+      .then(boothang => {
+        sendText(boothang.phoneNumber, req.body.message);
+      });
+  }
   res.redirect("/user");
 });
 
+/**
+ * DELETE boothang route
+ */
 router.delete("/:id", (req, res) => {
   db.boothang
     .destroy({
@@ -121,6 +134,9 @@ router.delete("/:id", (req, res) => {
   res.redirect("/user");
 });
 
+/**
+ * UPDATE boothang info route
+ */
 router.put("/:id", (req, res) => {
   db.boothang
     .update(

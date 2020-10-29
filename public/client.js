@@ -15,7 +15,9 @@ chosenBoothangButtons.forEach(button => {
       button.textContent;
     document.querySelector("#sendToChosenBoothang").textContent =
       "Send to " + button.textContent;
-    document.querySelector("#chosenBoothang").value = button.textContent;
+    document.querySelector("#chosenBoothang").value = button.getAttribute(
+      "boothangId"
+    );
   });
 });
 
