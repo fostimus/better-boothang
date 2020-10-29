@@ -14,6 +14,31 @@ if (clearInput) {
   });
 }
 
+// click handler to ensure send modal is displaying the proper initial state: a dropdown
+const initiateSendButton = document.querySelector("#initiate-send");
+if (initiateSendButton) {
+  initiateSendButton.addEventListener("click", () => {
+    const chooseBoo = document.querySelector(".choose-yo-boo");
+    console.log(chooseBoo);
+    if (chooseBoo.classList.contains("hidden")) {
+      chooseBoo.classList.toggle("hidden");
+    }
+
+    const sentToBoo = document.querySelector(".sent");
+    console.log(sentToBoo);
+    if (!sentToBoo.classList.contains("hidden")) {
+      sentToBoo.classList.toggle("hidden");
+    }
+
+    // TODO: this is a terrible way to do this. should use the value provided in user.js server side, not hard code the name
+    const modalTitle = document.querySelector(
+      "#send-boothang-modal .modal-title"
+    );
+    console.log(modalTitle);
+    modalTitle.textContent = "Choose which BooThang";
+  });
+}
+
 // click handler to change value of hidden input AND drop down button text to selcted value
 const chosenBoothangButtons = document.querySelectorAll(".choose-boothang");
 chosenBoothangButtons.forEach(button => {
@@ -24,6 +49,12 @@ chosenBoothangButtons.forEach(button => {
       "Send to " + button.textContent;
     document.querySelector("#chosenBoothang").value = button.getAttribute(
       "boothangId"
+    );
+
+    console.log("button boothang id: " + button.getAttribute("boothangId"));
+    console.log(
+      "chosenBoothang boothang id: " +
+        document.querySelector("#chosenBoothang").value
     );
   });
 });
@@ -39,7 +70,13 @@ if (sendToChosen) {
 const sendToAll = document.querySelector("#sendToAllBoothangs");
 if (sendToAll) {
   sendToAll.addEventListener("click", e => {
+    console.log(
+      "hidden input value: " + document.querySelector("#chosenBoothang").value
+    );
     document.querySelector("#chosenBoothang").value = "";
+    console.log(
+      "hidden input value: " + document.querySelector("#chosenBoothang").value
+    );
     sendMessageJson(e);
   });
 }

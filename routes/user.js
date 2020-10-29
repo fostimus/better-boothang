@@ -88,8 +88,10 @@ router.post("/", function(req, res) {
  * SEND message to BooThangs route
  */
 router.post("/messages", (req, res) => {
+  console.log("WHAT AM I: " + req.body.chosenBoothangId);
   // if there was no boothang id provided, send to all boothangs
   if (!req.body.chosenBoothangId || req.body.chosenBoothangId === "") {
+    console.log("i don't wanna be here");
     db.user
       .findOne({
         where: {
@@ -105,6 +107,7 @@ router.post("/messages", (req, res) => {
       });
   } // if the boothangId was provided, only send to that one
   else {
+    console.log("yay im here");
     db.boothang
       .findOne({
         where: {
