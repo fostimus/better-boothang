@@ -13,12 +13,12 @@
 
   <body>
     <header class="navbar">
-      <h1>Better BooThang</h1>
+      <div class="header">
+        <h1>Better BooThang</h1>
+      </div>
       <% if (currentUser) { %>
       <nav>
-        <ul>
-          <li><a href="/logout">Logout</a></li>
-        </ul>
+        <a href="/logout">Logout</a>
       </nav>
       <% } %>
     </header>
