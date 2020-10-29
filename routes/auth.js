@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  res.render("auth/signup");
+  res.render("/signup");
 });
 
 router.post("/signup", (req, res) => {
