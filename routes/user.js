@@ -91,7 +91,6 @@ router.post("/messages", (req, res) => {
   console.log("WHAT AM I: " + req.body.chosenBoothangId);
   // if there was no boothang id provided, send to all boothangs
   if (!req.body.chosenBoothangId || req.body.chosenBoothangId === "") {
-    console.log("i don't wanna be here");
     db.user
       .findOne({
         where: {
@@ -100,6 +99,7 @@ router.post("/messages", (req, res) => {
       })
       .then(returnedUser => {
         returnedUser.getBoothangs().then(boothangs => {
+          console.log("Sending a text all boos: " + boothangs);
           boothangs.forEach(boothang => {
             sendText(boothang.phoneNumber, req.body.message);
           });
@@ -107,7 +107,6 @@ router.post("/messages", (req, res) => {
       });
   } // if the boothangId was provided, only send to that one
   else {
-    console.log("yay im here");
     db.boothang
       .findOne({
         where: {
@@ -115,10 +114,11 @@ router.post("/messages", (req, res) => {
         }
       })
       .then(boothang => {
+        console.log("Sending a text to boo: " + boothang.name);
         sendText(boothang.phoneNumber, req.body.message);
       });
   }
-  res.redirect("/user");
+  // res.redirect("/user");
 });
 
 /**
