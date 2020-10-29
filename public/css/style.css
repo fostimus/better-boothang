@@ -145,6 +145,23 @@ nav ul li a:hover {
   right: 0;
 }
 
+/* carousel work */
+.carousel {
+  padding: 10px;
+  margin-bottom: 25px;
+  background-color: white;
+  border: solid 5px black;
+  border-radius: 10px;
+}
+
+blockquote {
+  margin: 0px;
+}
+
+footer {
+  text-align: right;
+}
+
 /**
  * Responsive
  */
