@@ -66,6 +66,7 @@ nav ul li a:hover {
 
 .title {
   padding: 25px;
+  font-size: 3em;
 }
 
 .login {
@@ -149,7 +150,7 @@ nav ul li a:hover {
 .carousel {
   padding: 10px;
   margin-bottom: 25px;
-  background-color: white;
+  background-color: lightgray;
   border: solid 5px black;
   border-radius: 10px;
 }
