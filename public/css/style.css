@@ -102,8 +102,9 @@ button:hover {
   z-index: 0;
 }
 
-.custom {
-  width: 75%;
+.message-input {
+  width: 650px;
+  min-width: 300px;
   margin-bottom: 15px;
 }
 
