@@ -2,7 +2,7 @@
 
 body {
   background-color: #2bbcff;
-  font-family: "Love Ya Like A Sister"
+  font-family: "Love Ya Like A Sister";
 }
 
 .alerts {
@@ -13,7 +13,6 @@ body {
 }
 
 header {
-  position: fixed;
   width: 100vw;
   height: 75px;
   display: flex;
@@ -94,7 +93,27 @@ nav ul li a:hover {
 }
 
 .suggestions:hover {
-  color: #bd1a1a
+  color: #bd1a1a;
+}
+
+.form-flex,
+.form-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.form-flex {
+  align-items: center;
+  gap: 15px;
+}
+
+.form-container {
+  align-items: flex-end;
+}
+
+/* place in modal to center text */
+.centered {
+  margin: 0 auto;
 }
 
 /**

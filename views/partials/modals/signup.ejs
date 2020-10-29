@@ -1,19 +1,27 @@
 <div class="container">
-  <h2 class="text-center">Register for Better BooThang</h2>
-  <form action="/signup" method="POST">
-    <label for="new-email">Email</label>
-    <input id="new-email" type="email" name="email">
+  <form action="/signup" method="POST" class="form-flex">
+    <div class="form-container">
+      <div>
+        <label for="new-email">Email</label>
+        <input id="new-email" type="email" name="email">
+      </div>
 
-    <label for="new-first-name">First Name</label>
-    <input id="new-first-name" type="text" name="firstName">
+      <div>
+        <label for="new-first-name">First Name</label>
+        <input id="new-first-name" type="text" name="firstName">
+      </div>
 
-    <label for="new-last-name">Last Name</label>
-    <input id="new-last-name" type="text" name="lastName">
+      <div>
+        <label for="new-last-name">Last Name</label>
+        <input id="new-last-name" type="text" name="lastName">
+      </div>
 
-    <label for="new-password">Password</label>
-    <input id="new-password" type="password" name="password">
+      <div>
+        <label for="new-password">Password</label>
+        <input id="new-password" type="password" name="password">
+      </div>
+    </div>
 
     <input type="submit" value="Sign up">
   </form>
-  <p class="text-center">Already a user? <a href="/login">Log in here.</a></p>
 </div>

@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   const signInModal = {
-    name: "sign-in-modal",
-    title: "Sign In",
+    name: "sign-up-modal",
+    title: "Register for Better BooThang",
     body: "./modals/signup.ejs"
   };
   const howItWorksModal = {
