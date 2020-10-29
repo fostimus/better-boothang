@@ -28,9 +28,14 @@ chosenBoothangButtons.forEach(button => {
   });
 });
 
-// sendToChosenBoothang
+const sendToChosen = document.querySelector("#sendToChosenBoothang");
+if (sendToChosen) {
+  sendToChosen.addEventListener("click", e => {
+    sendMessageJson(e);
+  });
+}
 
-// ensure hidden input value for chosenBoothang is ""
+// ensure hidden input value for chosenBoothang is "", send to backend via fetch API
 const sendToAll = document.querySelector("#sendToAllBoothangs");
 if (sendToAll) {
   sendToAll.addEventListener("click", e => {
@@ -58,6 +63,9 @@ function sendMessageJson(e) {
       );
       console.log(modalTitle);
       modalTitle.textContent = "Message sent!";
+
+      document.querySelector(".choose-yo-boo").classList.toggle("hidden");
+      document.querySelector(".sent").classList.toggle("hidden");
     }
   });
 }
