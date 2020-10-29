@@ -43,7 +43,6 @@ nav {
   position: absolute;
   right: 15px;
   margin-right: 10px;
-  outline: 2px solid black;
   border: 2px solid #ea6157;
   background: #57eaaa;
   display: flex;
@@ -62,6 +61,12 @@ nav a:hover {
   text-shadow: 0 0 2px darkred, 0 0 5px black;
   text-decoration: none;
   transition-duration: 0.9s;
+}
+
+button,
+nav {
+  border-radius: 10px;
+  /* background: #57eaaa; */
 }
 
 .hidden {
