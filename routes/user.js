@@ -81,6 +81,9 @@ router.post("/", function(req, res) {
  * - currently will send message to ALL BooThangs
  */
 router.post("/messages", (req, res) => {
+  console.log("Made it to the route!");
+  console.log("this is my body: " + req.body);
+  console.dir(req.body);
   db.user
     .findOne({
       where: {
@@ -88,6 +91,8 @@ router.post("/messages", (req, res) => {
       }
     })
     .then(returnedUser => {
+      console.log("----- returned user --------");
+      console.log(returnedUser);
       returnedUser.getBoothangs().then(boothangs => {
         boothangs.forEach(boothang => {
           sendText(boothang.phoneNumber, req.body.message);
@@ -119,6 +124,9 @@ router.delete("/:id", (req, res) => {
  * helper functions
  */
 const sendText = (phoneNumber, message) => {
+  console.log("I'm in the send text method");
+  console.log("phone number: " + phoneNumber);
+  console.log("message: " + message);
   // only execute if we have a phone number and a message
   if (phoneNumber && message) {
     client.messages
