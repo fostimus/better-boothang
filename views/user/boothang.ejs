@@ -40,7 +40,10 @@
     <% }) %>
     </ul>
 
-    <input class="custom" id='message-to-boo' type="text" name="message" value="">
+    <div>
+      <input class="custom" id='message-to-boo' type="text" name="message" value="">
+      <button class="clear-input" type="button" name="button">Clear</button>
+    </div>
     <button type="button" data-toggle="modal" data-target="#<%= sendToBoothangModal.name %>">Send to yo boo!</button>
 
     <%- include('../partials/modal', {modal: sendToBoothangModal}) %>

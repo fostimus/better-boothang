@@ -160,6 +160,9 @@ router.put("/:id", (req, res) => {
  * helper functions
  */
 const sendText = (phoneNumber, message) => {
+  console.log("I'm in the send text method");
+  console.log("phone number: " + phoneNumber);
+  console.log("message: " + message);
   // only execute if we have a phone number and a message
   if (phoneNumber && message) {
     client.messages
