@@ -1,15 +1,16 @@
 <!-- put drop down with boothangs here -->
 
 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="boothangDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select a BooThang
   </button>
-  <input type="hidden" name="chosenBoothang" value="">
+  <input type="hidden" id="chosenBoothang" name="chosenBoothang" value="">
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <% boothangs.forEach(function(boothang) { %>
-      <button type="button" class="dropdown-item"><%= boothang.name %></button>
+      <button type="button" class="dropdown-item choose-boothang"><%= boothang.name %></button>
     <% })%>
   </div>
 </div>
 
-<button type="submit" name="button">Send it!</button>
+<button id="sendToChosenBoothang" type="submit" name="button">Send it!</button>
+<button id="sendToAllBoothangs" type="submit" name="button">Send to All BooThangs</button>
