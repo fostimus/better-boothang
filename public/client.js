@@ -20,7 +20,7 @@ chosenBoothangButtons.forEach(button => {
 });
 
 //ensure hidden input value for chosenBoothang is ""
-const sendToAll = document.querySelector("sendToAllBoothangs");
+const sendToAll = document.querySelector("#sendToAllBoothangs");
 sendToAll.addEventListener("click", () => {
   document.querySelector("#chosenBoothang").value = "";
 });

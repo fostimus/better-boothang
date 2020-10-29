@@ -89,6 +89,9 @@ router.post("/", function(req, res) {
  * - currently will send message to ALL BooThangs
  */
 router.post("/messages", (req, res) => {
+  console.log("*** MESSAGE IS: " + req.body.message);
+  console.log("*** chosenBoothang IS: " + req.body.chosenBoothang);
+
   db.user
     .findOne({
       where: {
@@ -98,7 +101,7 @@ router.post("/messages", (req, res) => {
     .then(returnedUser => {
       returnedUser.getBoothangs().then(boothangs => {
         boothangs.forEach(boothang => {
-          sendText(boothang.phoneNumber, req.body.message);
+          // sendText(boothang.phoneNumber, req.body.message);
         });
       });
     });
