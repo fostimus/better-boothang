@@ -14,19 +14,13 @@
   <body>
     <header class="navbar">
       <h1>Better BooThang</h1>
+      <% if (currentUser) { %>
       <nav>
         <ul>
-          <% if (!currentUser) { %>
-          <li><a href="/">Home</a></li>
-          |<li><a href="/signup">Signup</a></li>|
-          <li><a href="/login">Login</a></li>
-          <% } else { %>
-          <li><a href="/">Home</a></li>
           <li><a href="/logout">Logout</a></li>
-          <li><a href="/user">Your Boo</a></li>
-          <% } %>
         </ul>
       </nav>
+      <% } %>
     </header>
     <%- include('partials/alerts') %>
 
