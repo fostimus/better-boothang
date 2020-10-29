@@ -49,7 +49,15 @@ For this website we used many different types of software for front-end, back-en
 
 Here's some code that we're proud to present to you!
 
+This code shows how it accesses our messages if a user chooses one of our premade messages.
 ![SendMessage](public/images/SendMessage.png)
+
+This is one part of code to delete and update BooThangs.
+![DeleteUpdate](public/images/DeleteAndUpdate.png)
+
+This is the code showing the route for updating your Boo in the database.
+
+![UpdateRoute](public/images/UpdateRoute.png)
 
 Please ensure that your .env has the necessary code to have this application run.
 
