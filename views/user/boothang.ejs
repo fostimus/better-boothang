@@ -34,12 +34,6 @@
   <p>Enter your text message below, or choose one of our premade messages</p>
 
   <form action="/user/messages" method="post">
-    <ul class="messages">
-    <% messages.forEach(function(message) { %>
-      <li><a class="suggestions" href='#'><%= message.message %></a></li>
-    <% }) %>
-    </ul>
-
     <div>
       <input class="custom" id='message-to-boo' type="text" name="message" value="">
       <button class="clear-input" type="button" name="button">Clear</button>
@@ -47,6 +41,12 @@
     <button id="initiate-send" type="button" data-toggle="modal" data-target="#<%= sendToBoothangModal.name %>">Send to yo boo!</button>
 
     <%- include('../partials/modal', {modal: sendToBoothangModal}) %>
+
+    <ul class="messages">
+    <% messages.forEach(function(message) { %>
+      <li><a class="suggestions" href='#'><%= message.message %></a></li>
+    <% }) %>
+    </ul>
 
   </form>
 

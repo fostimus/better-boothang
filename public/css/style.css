@@ -69,7 +69,8 @@ nav a:hover {
 }
 
 .title {
-  padding: 25px;
+  padding: 10px;
+  font-size: 3em;
 }
 
 .login {
@@ -147,6 +148,23 @@ nav a:hover {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+/* carousel work */
+.carousel {
+  padding: 10px;
+  margin-bottom: 25px;
+  background-color: #e3e3e3;
+  border: solid 3px black;
+  border-radius: 10px;
+}
+
+blockquote {
+  margin: 0px;
+}
+
+footer {
+  text-align: right;
 }
 
 /**
