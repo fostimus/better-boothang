@@ -34,14 +34,13 @@
   <p>Enter your text message below, or choose one of our premade messages</p>
   
   <form action="/user/messages" method="post">
+    <input class="custom" id='message-to-boo' type="text" name="message" value="">
+    <button type="submit" name="button">Send to yo boo!</button>
+    
     <ul class="messages">
     <% messages.forEach(function(message) { %>
       <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
-  
-    <input class="custom" id='message-to-boo' type="text" name="message" value="">
-    <button type="submit" name="button">Send to yo boo!</button>
   </form>
-  
 </div>
