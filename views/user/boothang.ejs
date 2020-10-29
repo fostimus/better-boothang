@@ -8,7 +8,7 @@
   <ul class="boothangs">
     <% boothangs.forEach(function(boothang) { %>
       <section class="col-sm container boos">
-        
+
         <div class="card boos">
           <div class="card-body text-center">
             <h2 class="card-title"><%= boothang.name %> </h2>
@@ -29,19 +29,22 @@
   </ul>
 
   <%- include('../partials/modal', {modal: addBoothangModal}) %>
-  
+
   <h3>Select Your Message</h3>
   <p>Enter your text message below, or choose one of our premade messages</p>
-  
+
   <form action="/user/messages" method="post">
     <ul class="messages">
     <% messages.forEach(function(message) { %>
       <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
-  
+
     <input class="custom" id='message-to-boo' type="text" name="message" value="">
-    <button type="submit" name="button">Send to yo boo!</button>
+    <button type="button" data-toggle="modal" data-target="#<%= sendToBoothangModal.name %>">Send to yo boo!</button>
+
+    <%- include('../partials/modal', {modal: sendToBoothangModal}) %>
+
   </form>
-  
+
 </div>

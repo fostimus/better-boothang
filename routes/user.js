@@ -5,8 +5,8 @@ const router = express.Router();
 const fs = require("fs");
 
 const client = require("twilio")(
-    process.env.ACCOUNT_SID, 
-    process.env.AUTH_TOKEN
+  process.env.ACCOUNT_SID,
+  process.env.AUTH_TOKEN
 );
 
 router.get("/", (req, res) => {
@@ -21,6 +21,12 @@ router.get("/", (req, res) => {
     name: "update-boothang",
     title: "Update Yo Boothang",
     body: "./modals/update-boo.ejs"
+  };
+  // set up send BooThang modal
+  const sendToBoothangModal = {
+    name: "send-boothang-modal",
+    title: "Choose which BooThang",
+    body: "./modals/send-to-boothang.ejs"
   };
 
   // get premade messages from json
@@ -44,7 +50,8 @@ router.get("/", (req, res) => {
           boothangs: boothangs,
           messages: messageData,
           addBoothangModal: addBoothangModal,
-          updateBoo: updateBoo
+          updateBoo: updateBoo,
+          sendToBoothangModal: sendToBoothangModal
         });
       });
     });
@@ -99,29 +106,34 @@ router.post("/messages", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  db.boothang.destroy({
+  db.boothang
+    .destroy({
       where: {
         id: req.params.id
       }
     })
     .then(deleteChick => {
-      console.log(`Bye~ ${deleteChick.name}` )
-    })
+      console.log(`Bye~ ${deleteChick.name}`);
+    });
   res.redirect("/user");
 });
 
 router.put("/:id", (req, res) => {
-  db.boothang.update({
-      name: req.body.newName,
-      phoneNumber: req.body.newPhone
-    }, {
-      where: {
-        id: req.params.id
+  db.boothang
+    .update(
+      {
+        name: req.body.newName,
+        phoneNumber: req.body.newPhone
+      },
+      {
+        where: {
+          id: req.params.id
+        }
       }
-    })
+    )
     .then(updateChick => {
-      console.log(`${updateChick.name} Updated!` )
-    })
+      console.log(`${updateChick.name} Updated!`);
+    });
   res.redirect("/user");
 });
 
