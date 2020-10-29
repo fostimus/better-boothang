@@ -64,6 +64,10 @@ nav ul li a:hover {
   transition-duration: 0.9s;
 }
 
+.hidden {
+  display: none;
+}
+
 .title {
   padding: 25px;
 }

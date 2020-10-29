@@ -7,6 +7,13 @@ messageLinks.forEach(messageLink => {
   });
 });
 
+const clearInput = document.querySelector(".clear-input");
+if (clearInput) {
+  clearInput.addEventListener("click", () => {
+    document.querySelector("#message-to-boo").value = "";
+  });
+}
+
 // click handler to change value of hidden input AND drop down button text to selcted value
 const chosenBoothangButtons = document.querySelectorAll(".choose-boothang");
 chosenBoothangButtons.forEach(button => {
@@ -21,21 +28,43 @@ chosenBoothangButtons.forEach(button => {
   });
 });
 
-//ensure hidden input value for chosenBoothang is ""
-const sendToAll = document.querySelector("#sendToAllBoothangs");
-sendToAll.addEventListener("click", () => {
-  document.querySelector("#chosenBoothang").value = "";
-});
+// sendToChosenBoothang
 
-document.querySelector(".clear-input").addEventListener("click", () => {
-  document.querySelector("#message-to-boo").value = "";
-});
+// ensure hidden input value for chosenBoothang is ""
+const sendToAll = document.querySelector("#sendToAllBoothangs");
+if (sendToAll) {
+  sendToAll.addEventListener("click", e => {
+    document.querySelector("#chosenBoothang").value = "";
+    sendMessageJson(e);
+  });
+}
+
+/**
+ * helper send message function
+ */
+function sendMessageJson(e) {
+  // prevent page reload, send JSON to backend
+  e.preventDefault();
+
+  const json = {
+    message: document.querySelector("#message-to-boo").value
+  };
+  postData("/user/messages", json).then(data => {
+    console.log(data);
+    if (data === 200) {
+      // TODO: this is a terrible way to do this. should use the value provided in user.js server side, not hard code the name
+      const modalTitle = document.querySelector(
+        "#send-boothang-modal .modal-title"
+      );
+      console.log(modalTitle);
+      modalTitle.textContent = "Message sent!";
+    }
+  });
+}
 
 /** post data
  */
 async function postData(url = "", data = {}) {
-  console.log("data: ");
-  console.log(data);
   // Default options are marked with *
   let response = await fetch(url, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -50,17 +79,6 @@ async function postData(url = "", data = {}) {
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
-  console.log(response.status);
+  console.log("Response status: " + response.status);
   return response.status; // parses JSON response into native JavaScript objects
 }
-
-document.querySelector("#send-to-boo").addEventListener("click", e => {
-  const json = {
-    message: document.querySelector("#message-to-boo").value
-  };
-  console.log(json);
-  e.preventDefault();
-  postData("/user/messages", json).then(data => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
-});
