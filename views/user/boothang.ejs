@@ -1,20 +1,22 @@
-<div class="container">
+<div class="container profile">
+  <div class="addButton"><button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button></div>
   <% if (boothangs.length === 1) {%>
-    <h3>Current BooThang</h3>
+    <h3 class="text-center">Current BooThang</h3>
   <% } else { %>
-    <h3>Current BooThangs</h3>
+    <h3 class="text-center">Current BooThangs</h3>
   <% } %>
   <ul class="boothangs">
     <% boothangs.forEach(function(boothang) { %>
-      <section class="col-4 container boos">
-        <div class="card boo">
+      <section class="col-sm container boos">
+        
+        <div class="card boos">
           <div class="card-body text-center">
             <h2 class="card-title"><%= boothang.name %> </h2>
             <h3><%= boothang.phoneNumber %></h3>
           </div>
         </div>
-        <div class="card boo text-center">
-          <div class="card-buttons">
+        <div class="card boos text-center">
+          <div class="card buttons">
             <form action="/user/<%= boothang.id %>?_method=DELETE" method="post">
               <button type="submit" name="button">Delete</button>
             </form>
@@ -25,8 +27,6 @@
       </section>
     <% }) %>
   </ul>
-    
-  <button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button>
 
   <%- include('../partials/modal', {modal: addBoothangModal}) %>
   

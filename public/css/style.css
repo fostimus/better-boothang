@@ -123,15 +123,36 @@ nav ul li a:hover {
   padding: 15px;
 }
 
+.card .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
 .boos {
   margin: 0;
   padding: 5px;
+}
+
+.profile {
+  position: relative;
+}
+
+.addButton {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /**
  * Responsive
  */
 @media only screen and (max-width: 650px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
   header > h1 {
     font-size: 1.5rem;
   }
@@ -145,5 +166,17 @@ nav ul li a:hover {
   }
   nav ul li {
     font-size: 0.8rem;
+  }
+  .addButton {
+    position: initial;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .boothangs {
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 }
