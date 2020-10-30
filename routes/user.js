@@ -88,7 +88,6 @@ router.post("/", function(req, res) {
  * SEND message to BooThangs route
  */
 router.post("/messages", (req, res) => {
-  console.log("WHAT AM I: " + req.body.chosenBoothangId);
   // if there was no boothang id provided, send to all boothangs
   if (!req.body.chosenBoothangId || req.body.chosenBoothangId === "") {
     db.user
