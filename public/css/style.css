@@ -35,6 +35,11 @@ h1 {
   text-shadow: 0 1px 2px #ffd300, 0 1px 4px white, 0 1px 10px black;
   font-family: "Love Ya Like A Sister";
   font-weight: bold;
+  font-size: 46px;
+}
+
+h2 {
+  font-size: 36px;
 }
 
 nav {
@@ -170,6 +175,10 @@ button:hover {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+#new-boothang {
+  font-size: 22px;
 }
 
 /* carousel work */

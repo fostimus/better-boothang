@@ -118,7 +118,7 @@ router.post("/messages", (req, res) => {
         sendText(boothang.phoneNumber, req.body.message);
       });
   }
-  // res.redirect("/user");
+  res.redirect("/user");
 });
 
 /**
