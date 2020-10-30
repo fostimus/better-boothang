@@ -40,7 +40,7 @@ The team had created a wireframe to help visualize what the app would look like 
 ![Profile](public/images/BBTProfile.png)
 
 ## Code Snipets
-For this website we used many different types of software for front-end, back-end, and anything in between to be able to achieve what we can show you today. Here's a list of some of the moduals and technology.
+For this website we used many different types of software for front-end, back-end, and anything in between to be able to achieve what we can show you today. Here's a list of some of the modules and technology.
 - Express
 - Passport
 - Sequelize
