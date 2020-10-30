@@ -40,18 +40,46 @@ The team had created a wireframe to help visualize what the app would look like 
 ![Profile](public/images/BBTProfile.png)
 
 ## Code Snipets
-For this website we used many different types of software for front-end, back-end, and anything in between to be able to achieve what we can show you today. Here's a list of some of the software.
+For this website we used many different types of software for front-end, back-end, and anything in between to be able to achieve what we can show you today. Here's a list of some of the modules and technology.
 - Express
 - Passport
 - Sequelize
 - Bootstrap
 - JSON
+- Twilio
+- Fetch API
 
 Here's some code that we're proud to present to you!
 
+This code shows how it accesses our messages if a user chooses one of our premade messages.
 ![SendMessage](public/images/SendMessage.png)
 
-Please ensure that your .env has the necessary code to have this application run.
+This code shows how one of the modals work.
+
+![Modal](public/images/JSModal.png)
+
+This is one part of code to delete and update BooThangs.
+![DeleteUpdate](public/images/DeleteAndUpdate.png)
+
+This is the code showing the route for updating your Boo in the database.
+
+![UpdateRoute](public/images/UpdateRoute.png)
+
+This is the code to access Twilio to send messages to phone devices!
+
+![Twilio](public/images/Twilio.png)
+
+This is how the carousel works!
+
+![Carousel](public/images/Carousel.png)
+
+## Note
+Please ensure that the following environment variables are set before the application is run
+- SESSION_SECRET
+- AUTH_TOKEN
+- ACCOUNT_SID
+- TWILIO_NUM
+- A database named "better-boothang" to migrate models
 
 ## Future Development
 We originally had plans for this project that we ultimately had to cut out in order to achieve a working product by our deadline. In the future we would like to add many features to our base version.
