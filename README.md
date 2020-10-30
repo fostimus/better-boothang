@@ -102,3 +102,4 @@ We originally had plans for this project that we ultimately had to cut out in or
 - As a user, I want to be able to select a date and time for the message to be sent to my selected BooThang.
 - As a user, I want to be able to upload photos for each boo.
 - As a user, I want to have multiple different categories of texts to choose from.
+- Update styling (list elements for premade messages)
