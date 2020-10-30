@@ -1,0 +1,25 @@
+<!-- put drop down with boothangs here -->
+
+<div class="choose-yo-boo">
+  <div class="form-flex">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="boothangDropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select a BooThang
+      </button>
+      <input type="hidden" id="chosenBoothang" name="chosenBoothangId" value="">
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% boothangs.forEach(function(boothang) { %>
+          <button type="button" class="dropdown-item choose-boothang" boothangId="<%= boothang.id %>"><%= boothang.name %></button>
+        <% })%>
+      </div>
+    </div>
+
+    <div class="send-buttons">
+      <button id="sendToChosenBoothang" type="submit" name="button">Send it!</button>
+      <button id="sendToAllBoothangs" type="submit" name="button">Send to All BooThangs</button>
+    </div>
+  </div>
+</div>
+<div class="sent hidden">
+  <h1>The world thanks you for being a Better BooThang!</h1>
+</div>
