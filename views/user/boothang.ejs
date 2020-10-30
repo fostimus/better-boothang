@@ -1,9 +1,9 @@
 <div class="container profile">
   <div class="addButton"><button id="new-boothang" type="button" data-toggle="modal" data-target="#<%= addBoothangModal.name %>">Add New BooThang</button></div>
   <% if (boothangs.length === 1) {%>
-    <h3 class="text-center">Current BooThang</h3>
+    <h2 class="text-center">Current BooThang</h2>
   <% } else { %>
-    <h3 class="text-center">Current BooThangs</h3>
+    <h2 class="text-center">Current BooThangs</h2>
   <% } %>
   <ul class="boothangs">
     <% boothangs.forEach(function(boothang) { %>
@@ -28,18 +28,25 @@
   </ul>
 
   <%- include('../partials/modal', {modal: addBoothangModal}) %>
-  
-  <h3>Select Your Message</h3>
-  <p>Enter your text message below, or choose one of our premade messages</p>
-  
-  <form action="/user/messages" method="post">
-    <input class="custom" id='message-to-boo' type="text" name="message" value="">
-    <button type="submit" name="button">Send to yo boo!</button>
-    
+
+  <h3 class="text-center">Select Your Message</h3>
+  <p class="text-center">Enter your text message below, or choose one of our premade messages</p>
+
+  <form action="/user/messages" method="post" class= "form-flex">
+    <div>
+      <input class="message-input" id='message-to-boo' type="text" name="message" value="">
+      <button class="clear-input" type="button" name="button">Clear</button>
+    </div>
+    <button id="initiate-send" type="button" data-toggle="modal" data-target="#<%= sendToBoothangModal.name %>">Send to yo boo!</button>
+
+    <%- include('../partials/modal', {modal: sendToBoothangModal}) %>
+
     <ul class="messages">
     <% messages.forEach(function(message) { %>
       <li><a class="suggestions" href='#'><%= message.message %></a></li>
     <% }) %>
     </ul>
+
   </form>
+
 </div>

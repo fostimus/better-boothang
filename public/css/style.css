@@ -20,7 +20,7 @@ header {
   width: 100vw;
   min-height: 75px;
   outline: 2px solid rgb(77, 73, 73);
-  border-bottom: 3px solid goldenrod;
+  border-bottom: 3px solid #f5c277;
   background: #6156ea;
 }
 
@@ -35,24 +35,30 @@ h1 {
   text-shadow: 0 1px 2px #ffd300, 0 1px 4px white, 0 1px 10px black;
   font-family: "Love Ya Like A Sister";
   font-weight: bold;
+  font-size: 46px;
+}
+
+h2 {
+  font-size: 36px;
 }
 
 nav {
   min-width: 75px;
-  max-width: 150px;
+  max-width: 200px;
+  font-size: 24px;
+  padding: 5px;
   position: absolute;
   right: 15px;
   margin-right: 10px;
-  outline: 2px solid black;
-  border: 2px solid #ea6157;
-  background: #57eaaa;
+  border: 2px solid #f5c277;
+  background: #74c943;
   display: flex;
   justify-content: center;
 }
 
 nav a {
   font-weight: bolder;
-  color: #ea6157;
+  color: #f5c277;
   text-shadow: 0 0 2px black;
   text-transform: uppercase;
 }
@@ -62,6 +68,24 @@ nav a:hover {
   text-shadow: 0 0 2px darkred, 0 0 5px black;
   text-decoration: none;
   transition-duration: 0.9s;
+}
+
+button,
+nav {
+  border-radius: 10px;
+}
+
+button {
+  background: #f5c277;
+  transition: all 0.7s;
+}
+
+button:hover {
+  background: #74c943;
+}
+
+.hidden {
+  display: none;
 }
 
 .title {
@@ -83,8 +107,9 @@ nav a:hover {
   z-index: 0;
 }
 
-.custom {
-  width: 75%;
+.message-input {
+  width: 650px;
+  min-width: 300px;
   margin-bottom: 15px;
 }
 
@@ -95,6 +120,12 @@ nav a:hover {
 
 .suggestions:hover {
   color: #bd1a1a;
+}
+
+.send-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .form-flex,
@@ -144,6 +175,10 @@ nav a:hover {
   position: absolute;
   top: 0;
   right: 0;
+}
+
+#new-boothang {
+  font-size: 22px;
 }
 
 /* carousel work */
