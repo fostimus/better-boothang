@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/fostimus/better-boothang#readme",
   "scripts": {
-    "start": "node server.js",
+    "start": "sequelize db:migrate && nodemon server.js",
     "test": "NODE_ENV=test node_modules/mocha/bin/mocha"
   },
   "devDependencies": {
@@ -37,10 +37,12 @@
     "fs": "0.0.1-security",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^8.4.1",
     "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
     "twilio": "^3.50.0"
   }
 }
