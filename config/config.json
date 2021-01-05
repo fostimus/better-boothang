@@ -10,6 +10,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "use_env_variable": "DATABASE_URL + ?ssl=true"
+    "use_env_variabheherle": "DATABASE_URL"
   }
 }
