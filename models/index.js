@@ -10,9 +10,7 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  const url = process.env[config.use_env_variable] + "?ssl=true";
-  console.log(url);
-  sequelize = new Sequelize(url);
+  sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
   sequelize = new Sequelize(
     config.database,
