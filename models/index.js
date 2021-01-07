@@ -10,7 +10,11 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], {
+  sequelize = new Sequelize(
+    process.env[config.use_env_variable] + "?sslmode=require"
+  );
+  /*
+  {
     dialect: "postgres",
     protocol: "postgres",
     dialectOptions: {
@@ -18,7 +22,8 @@ if (config.use_env_variable) {
         rejectUnauthorized: false
       }
     }
-  });
+  }
+  */
 } else {
   sequelize = new Sequelize(
     config.database,
