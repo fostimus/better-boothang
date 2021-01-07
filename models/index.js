@@ -50,5 +50,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-
-// postgres://ptjxhrnojdnjwc:856a1f77a3ea175ea9ad8ab9add8bf8d1378eb09b7d632f3afd47a59e4b8885f@ec2-52-44-46-66.compute-1.amazonaws.com:5432/dc9ooj4ogtldem
