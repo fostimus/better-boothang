@@ -10,13 +10,7 @@ const db = {};
 
 let sequelize;
 if (process.env.DATABASE_URL) {
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: "postgres",
-    logging: false,
-    dialectOptions: {
-      ssl: true
-    }
-  });
+  sequelize = new Sequelize(process.env.DATABASE_URL);
 } else if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], {
     dialect: "postgres",
