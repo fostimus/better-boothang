@@ -20,10 +20,6 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/signup", (req, res) => {
-  res.render("/signup");
-});
-
 router.post("/signup", (req, res) => {
   // find or create a user, providing the name and password as default values
   db.user
@@ -48,13 +44,13 @@ router.post("/signup", (req, res) => {
       } else {
         // if not created, the email already exists
         req.flash("error", "Email already exists");
-        res.redirect("/signup");
+        res.redirect("/");
       }
     })
     .catch(error => {
       // if an error occurs, let's see what the error is
       req.flash("error", error.message);
-      res.redirect("/signup");
+      res.redirect("/");
     });
 });
 
